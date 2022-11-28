@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const HomeHeroWrapper = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
 `;
 
 export const ImageWrapper = styled.div`
@@ -11,6 +13,7 @@ export const ImageWrapper = styled.div`
   width: 100%;
   border-radius: 0 0 30px 30px;
   z-index: -1;
+  overflow: hidden;
   ::after {
     content: '';
     position: absolute;
