@@ -17,7 +17,7 @@ import welcomeSliceReducer from '../features/welcome/welcomeSlice';
 import formSliceReducer from '../features/form/formSlice';
 import genreSliceReducer from '../features/genreSelector/genreSlice';
 import creditsSliceReducer from '../features/credits/creditSlice';
-
+import selectedMovieSliceReducer from '../features/selectedMovie/selectedMovieSlice';
 import {
   persistStore,
   persistReducer,
@@ -44,6 +44,7 @@ const rootReducer = combineReducers({
   formData: formSliceReducer,
   genreData: genreSliceReducer,
   creditsData: creditsSliceReducer,
+  selectedMovieData: selectedMovieSliceReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

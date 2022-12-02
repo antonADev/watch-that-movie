@@ -6,14 +6,15 @@ import {
   TextWrapper,
   GenreWrapper,
   GenrePara,
-} from './movie-preview.styles';
+} from './category-item.styles';
 
 import { DESKTOP_IMAGE_PATH, MOBILE_IMAGE_PATH } from '../../constants/global';
 
-const MoviePreview = ({ title, year, backdrop, genres }) => {
+const CategoryItem = ({ title, year, backdrop, genres, onClick }) => {
   return (
     <Theme>
       <ImageWrapper
+        onClick={onClick}
         background={`${
           window.innerWidth > 768 ? DESKTOP_IMAGE_PATH : MOBILE_IMAGE_PATH
         }${backdrop}`}>
@@ -35,4 +36,4 @@ const MoviePreview = ({ title, year, backdrop, genres }) => {
   );
 };
 
-export default MoviePreview;
+export default CategoryItem;

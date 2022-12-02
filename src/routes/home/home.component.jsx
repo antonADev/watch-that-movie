@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 import HomeHero from '../../components/home-hero/home-hero.component';
-import MoviePreview from '../../components/movie-preview/movie-preview.component';
+import CategoryCarousel from '../../components/category-carousel/category-carousel.component';
 import Theme from '../../Theme';
 
-import { HomeWrapper, MovieCarousel } from './home.styles';
+import { HomeWrapper, MovieCarousel, CarouselWrapper } from './home.styles';
 
 const data = {
   adult: false,
@@ -57,7 +57,7 @@ const data = {
 
 const Home = () => {
   const [movieData, setMovieData] = useState([]);
-
+  const [seriesData, setSeriesData] = useState([]);
   // const fetchData = useCallback(async()=> {
   //   const data = await getData();
   //   setState(data)
@@ -69,37 +69,38 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch(
+      const movieFetch = await fetch(
         `https://api.themoviedb.org/3/movie/popular?api_key=b4075be843e96cdf1d04055e2fee6ec7&language=en-US&page=1`
       );
+      const seriesFetch = await fetch(
+        `https://api.themoviedb.org/3/tv/popular?api_key=b4075be843e96cdf1d04055e2fee6ec7&language=en-US&page=1`
+      );
 
-      const res = await data.json();
+      await Promise.all([movieFetch, seriesFetch]);
 
-      setMovieData(res.results);
+      // console.log(await movieFetch.json(), await seriesFetch.json());
+      setMovieData(await movieFetch.json());
+      setSeriesData(await seriesFetch.json());
+      console.log(movieData, seriesData);
+      // setMovieData(res.results);
     };
     fetchData();
-    console.log(movieData);
   }, []);
 
   return (
     <Theme>
       <HomeWrapper>
         <HomeHero>
-          <MovieCarousel>
-            {movieData?.map((el) => {
-              return (
-                <MoviePreview
-                  title={el.title}
-                  year={el.release_date}
-                  backdrop={el.backdrop_path}
-                  genres={[
-                    { id: 1, name: 'Hello' },
-                    { id: 2, name: 'Hi' },
-                  ]}
-                />
-              );
-            })}
-          </MovieCarousel>
+          <CarouselWrapper>
+            <CategoryCarousel
+              title={'Trending Movies'}
+              category={movieData.results}
+            />
+            <CategoryCarousel
+              title={'Trending Series'}
+              category={seriesData.results}
+            />
+          </CarouselWrapper>
         </HomeHero>
       </HomeWrapper>
     </Theme>

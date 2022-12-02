@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 export const HomeWrapper = styled.div`
   position: relative;
-  height: 100vh;
-
+  width: 100vw;
   /* ::before {
     content: '';
     top: 0;
@@ -19,9 +18,10 @@ export const HomeWrapper = styled.div`
   } */
 `;
 
-export const MovieCarousel = styled.div`
+export const CarouselWrapper = styled.div`
   display: flex;
-  overflow-x: scroll;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  gap: 2rem;
 `;
