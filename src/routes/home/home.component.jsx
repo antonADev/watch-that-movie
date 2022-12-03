@@ -5,6 +5,7 @@ import CategoryCarousel from '../../components/category-carousel/category-carous
 import Theme from '../../Theme';
 
 import { HomeWrapper, MovieCarousel, CarouselWrapper } from './home.styles';
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 const data = {
   adult: false,
@@ -70,10 +71,10 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       const movieFetch = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=b4075be843e96cdf1d04055e2fee6ec7&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
       );
       const seriesFetch = await fetch(
-        `https://api.themoviedb.org/3/tv/popular?api_key=b4075be843e96cdf1d04055e2fee6ec7&language=en-US&page=1`
+        `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=1`
       );
 
       await Promise.all([movieFetch, seriesFetch]);
@@ -81,15 +82,16 @@ const Home = () => {
       // console.log(await movieFetch.json(), await seriesFetch.json());
       setMovieData(await movieFetch.json());
       setSeriesData(await seriesFetch.json());
-      console.log(movieData, seriesData);
+
       // setMovieData(res.results);
     };
     fetchData();
   }, []);
-
+  console.log(movieData, seriesData);
   return (
     <Theme>
       <HomeWrapper>
+        {/* <h1>WatchThatMovie</h1> */}
         <HomeHero>
           <CarouselWrapper>
             <CategoryCarousel

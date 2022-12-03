@@ -1,23 +1,26 @@
 import styled from 'styled-components';
 
 export const CategoryWrapper = styled.div`
-  margin-top: 25%;
+  margin: 5% 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 80%;
+  width: 45%;
+  min-width: 360px;
   overflow: hidden;
 `;
 
 export const CategoryTitle = styled.h3`
-  font-size: 1.5rem;
+  font-family: 'Passion One', cursive;
+  font-size: 1.7rem;
   font-weight: 500;
   margin-bottom: 1rem;
 `;
 
 export const CarouselWrapper = styled.div`
   position: relative;
+  min-width: 100%;
   width: 100%;
   border-radius: 30px;
   /* display: flex;

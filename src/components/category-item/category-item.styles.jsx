@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const ImageWrapper = styled.div`
   position: relative;
   height: 30vmax;
-  min-width: 80vmin;
+  min-width: 100%;
+
   border-radius: 30px;
   overflow: hidden;
   display: flex;
@@ -45,7 +46,7 @@ export const TextWrapper = styled.div`
   );
   h1 {
     margin: 0;
-    font-size: clamp(1.5rem, -0.875rem + 8.333vw, 4rem);
+    font-size: clamp(1.5rem, -0.875rem + 6.333vw, 3rem);
     font-weight: 600;
     span {
       color: gray;

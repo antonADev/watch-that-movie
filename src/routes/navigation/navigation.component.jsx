@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import movieLogo from '../../assets/logo.png';
+import React, { useState, useEffect, useRef } from 'react';
+import { useOnClickOutside } from '../../utils/hooks';
 
 import { Outlet } from 'react-router-dom';
 
@@ -9,6 +9,7 @@ import { ReactComponent as Close } from '../../assets/icon-menu-close.svg';
 import {
   Nav,
   LinkLogo,
+  NavHeader,
   NavLink,
   LinkMenu,
   UnorderedLi,
@@ -18,13 +19,18 @@ import {
 import Theme from '../../Theme';
 
 const Navigation = () => {
+  const ref = useRef();
   const [isOpen, setIsOpen] = useState(false);
+
+  useOnClickOutside(ref, () => setIsOpen(false));
+
   return (
     <>
       <Theme>
-        <Nav>
+        <Nav ref={ref}>
           <LinkLogo to='/' aria-label='logo-home-link'>
-            <img src={movieLogo} alt='logo' />
+            {/* <img src={movieLogo} alt='logo' /> */}
+            <NavHeader>WTM</NavHeader>
           </LinkLogo>
 
           <LinkMenu isOpen={isOpen}>

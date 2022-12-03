@@ -19,9 +19,12 @@ export const HomeWrapper = styled.div`
 `;
 
 export const CarouselWrapper = styled.div`
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  gap: 5rem;
+  /* justify-content: center;
+  align-items: center; */
 `;

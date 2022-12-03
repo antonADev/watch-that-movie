@@ -5,9 +5,9 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 1rem;
+  padding: 0 1rem;
   height: 5rem;
-  background-color: ${(props) => props.theme.colors.veryLight};
+  background-color: ${(props) => props.theme.colors.white};
 
   @media ${(props) => props.theme.deviceMin.laptop} {
     /* padding: 3rem 0 2.7rem; */
@@ -19,11 +19,22 @@ export const LinkLogo = styled(Link)`
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 6vmax;
-  img {
+  text-decoration: none;
+  :active {
+    color: none;
+  }
+  :visited {
+    color: none;
+  }
+  /* img {
     max-height: 100%;
     max-width: 80%;
-  }
+  } */
+`;
+export const NavHeader = styled.h2`
+  font-family: 'Passion One', cursive;
+  font-size: 2rem;
+  color: ${(props) => props.theme.colors.main};
 `;
 
 export const LinkMenu = styled.div`
@@ -35,7 +46,7 @@ export const LinkMenu = styled.div`
   justify-content: flex-end;
   height: 100vh;
   width: 70%;
-  background-color: ${(props) => props.theme.colors.veryLight};
+  background-color: ${(props) => props.theme.colors.white};
   transition: right 1s;
   z-index: 99;
   @media ${(props) => props.theme.deviceMin.laptop} {
