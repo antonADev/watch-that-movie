@@ -51,7 +51,9 @@ const ShowSelector = ({ formData, setFormData }) => {
   //   genre: '',
   // });
 
-  const { genres, status, message } = useSelector((state) => state.genreData);
+  const { movieGenres, seriesGenres, status, message } = useSelector(
+    (state) => state.genreData
+  );
 
   // const handleClick = (e) => {
   //   setActive(e.target.id);
@@ -61,9 +63,9 @@ const ShowSelector = ({ formData, setFormData }) => {
   // };
   const handleClick = (e) => {
     setActive(e.target.id);
-    setFormData({ ...formData, movieOrTv: e.target.id });
+    setFormData({ movieOrTv: e.target.id, genre: '' });
     // dispatch(setMovieOrTv(e.target.id));
-    dispatch(fetchGenreData(e.target.id));
+    dispatch(fetchGenreData());
   };
 
   return (
@@ -92,10 +94,12 @@ const ShowSelector = ({ formData, setFormData }) => {
 
         <ChoiceSelection title='Choose a genre'>
           {status === 'loading' && <Spinner />}
-          {status === 'idle' && genres && (
+          {status === 'idle' && movieGenres && seriesGenres && (
             <Genre
               label='Choose'
-              values={genres.genres}
+              values={
+                active === 'movie' ? movieGenres.genres : seriesGenres.genres
+              }
               onChange={(v) => console.log(v)}
               formData={formData}
               setFormData={setFormData}

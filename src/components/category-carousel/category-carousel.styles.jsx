@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const CategoryWrapper = styled.div`
-  margin: 5% 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   width: 45%;
-  min-width: 360px;
+  min-width: 320px;
   overflow: hidden;
+  margin: 5% 0 0 0;
 `;
 
 export const CategoryTitle = styled.h3`

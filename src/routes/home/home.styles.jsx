@@ -24,7 +24,14 @@ export const CarouselWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 3rem;
+
+  @media ${(props) => props.theme.deviceMin.laptop} {
+    gap: 5rem;
+  }
+  /* & > :not(:last-child) {
+    margin: 10% 0 0 0;
+  } */
   /* justify-content: center;
   align-items: center; */
 `;

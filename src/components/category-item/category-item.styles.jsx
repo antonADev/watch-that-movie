@@ -66,8 +66,9 @@ export const GenreWrapper = styled.div`
 
 export const GenrePara = styled.p`
   background-color: ${(props) => props.theme.colors.grey};
+  min-width: fit-content;
   border-radius: 25px;
-  font-size: 0.7rem;
+  font-size: clamp(0.5rem, -0.875rem + 4.333vw, 0.7rem);
   font-weight: 700;
   padding: 0.1rem 0.7rem;
 `;

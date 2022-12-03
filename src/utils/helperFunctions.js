@@ -17,10 +17,26 @@ export const createMovieObject = function (data) {
   };
 };
 
+export const getLang = () => {
+  return navigator.language;
+};
+
 export const useFilter = (array, filterFromWhat, filterIf, howManyResults) => {
   return array
     ?.filter((el) => el?.[filterFromWhat] === filterIf)
     .map((el) => el.name)
     .slice(0, howManyResults)
     .join(', ');
+};
+
+export const findAndCompare = (firstArray, secondArray, elementToFind) => {
+  firstArray.map((element) => {
+    const match = secondArray.find((el) => el[elementToFind] === element);
+    return match;
+  });
+
+  // el.genre_ids?.map((genre) => {
+  //   const match = genresArr.find((el) => el.id === genre);
+  //   return match;
+  // })
 };

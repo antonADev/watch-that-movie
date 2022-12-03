@@ -45,11 +45,11 @@ export const TextWrapper = styled.div`
   );
   h1 {
     margin: 0;
-    font-size: clamp(1.5rem, -0.875rem + 8.333vw, 4rem);
+    font-size: clamp(1.5rem, -0.875rem + 4.333vw, 3.5rem);
     font-weight: 600;
     span {
       color: gray;
-      font-size: clamp(0.9rem, -0.875rem + 6.333vw, 1.2rem);
+      font-size: clamp(0.9rem, -0.875rem + 4.333vw, 1.1.8rem);
       font-weight: 400;
     }
   }
