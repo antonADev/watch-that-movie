@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import HomeHero from '../../components/home-hero/home-hero.component';
 import CategoryCarousel from '../../components/category-carousel/category-carousel.component';
@@ -59,6 +60,7 @@ const data = {
 const Home = () => {
   const [movieData, setMovieData] = useState([]);
   const [seriesData, setSeriesData] = useState([]);
+
   // const fetchData = useCallback(async()=> {
   //   const data = await getData();
   //   setState(data)
@@ -70,20 +72,30 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const movieFetch = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-      );
-      const seriesFetch = await fetch(
-        `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=1`
-      );
+      try {
+        const response = await Promise.all([
+          fetch(
+            `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+          ),
+          fetch(
+            `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=1`
+          ),
+        ]);
+        const data = await Promise.all(response.map((r) => r.json()));
+        setMovieData(data[0].results);
+        setSeriesData(data[1].results);
+      } catch (error) {}
 
-      await Promise.all([movieFetch, seriesFetch]);
+      // const movieFetch = await fetch(
+      //   `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+      // );
+      // const seriesFetch = await fetch(
+      //   `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=1`
+      // );
 
-      // console.log(await movieFetch.json(), await seriesFetch.json());
-      setMovieData(await movieFetch.json());
-      setSeriesData(await seriesFetch.json());
-
-      // setMovieData(res.results);
+      // await Promise.all([movieFetch, seriesFetch]);
+      // setMovieData(await movieFetch.json());
+      // setSeriesData(await seriesFetch.json());
     };
     fetchData();
   }, []);
@@ -94,14 +106,8 @@ const Home = () => {
         {/* <h1>WatchThatMovie</h1> */}
         <HomeHero>
           <CarouselWrapper>
-            <CategoryCarousel
-              title={'Trending Movies'}
-              category={movieData.results}
-            />
-            <CategoryCarousel
-              title={'Trending Series'}
-              category={seriesData.results}
-            />
+            <CategoryCarousel title={'Trending Movies'} category={movieData} />
+            <CategoryCarousel title={'Trending Series'} category={seriesData} />
           </CarouselWrapper>
         </HomeHero>
       </HomeWrapper>

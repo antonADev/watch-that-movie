@@ -45,6 +45,7 @@ const CategoryCarousel = ({ title, category }) => {
         <CategoryDataWrapper {...handlers} activeIndex={activeIndex}>
           {category?.map((el) => (
             <CategoryItem
+              key={el.id}
               onClick={() => {
                 return navigate('/random');
               }}
