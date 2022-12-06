@@ -4,37 +4,20 @@ const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const initialState = {
   movieGenres: {},
   seriesGenres: {},
-  type: '',
   status: '',
   message: '',
 };
-
-//MOVIE
-// https://api.themoviedb.org/3/genre/movie/list?api_key=<<api_key>>&language=en-US
-
-// SERIES
-// https://api.themoviedb.org/3/genre/tv/list?api_key=<<api_key>>&language=en-US
 
 export const fetchGenreData = createAsyncThunk(
   'genreData/fetchGenreData',
   async (_, { rejectWithValue }) => {
     try {
-      // const data = await fetch(
-      //   `https://api.themoviedb.org/3/genre/${type}/list?api_key=${API_KEY}&language=${navigator.language}`
-      // );
-      // const res = await data.json();
-
-      // return res;
       const response = await Promise.all([
         fetch(
-          `https://api.themoviedb.org/3/genre/${'movie'}/list?api_key=${API_KEY}&language=${
-            navigator.language
-          }`
+          `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=${navigator.language}`
         ),
         fetch(
-          `https://api.themoviedb.org/3/genre/${'tv'}/list?api_key=${API_KEY}&language=${
-            navigator.language
-          }`
+          `https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=${navigator.language}`
         ),
       ]);
       const data = await Promise.all(response.map((r) => r.json()));

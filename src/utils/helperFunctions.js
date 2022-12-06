@@ -10,8 +10,8 @@ export const createMovieObject = function (data) {
     genres: data.genres,
     poster: data.poster_path,
     overview: data.overview !== '' ? data.overview : 'No Storyline Available',
-    title: data.title,
-    release: data.release_date,
+    title: data.title ? data.title : data.name,
+    release: data.release_date ? data.release_date : data.first_air_date,
     voteAverage: data.vote_average,
     voteCount: data.vote_count,
   };

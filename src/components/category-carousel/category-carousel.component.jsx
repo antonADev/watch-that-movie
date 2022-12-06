@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
@@ -12,9 +13,15 @@ import {
 } from './category-carousel.styles';
 
 import CategoryItem from '../category-item/category-item.component';
-import { findAndCompare } from '../../utils/helperFunctions';
+import {
+  fetchMovieCredits,
+  fetchSelectedMovie,
+  setType,
+} from '../../features/selectedMovie/selectedMovieSlice';
+import { setId } from '../../features/selectedMovie/selectedMovieSlice';
 
-const CategoryCarousel = ({ title, category, genresArr }) => {
+const CategoryCarousel = ({ title, category, genresArr, type }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -45,11 +52,14 @@ const CategoryCarousel = ({ title, category, genresArr }) => {
 
         <CategoryDataWrapper {...handlers} activeIndex={activeIndex}>
           {category?.map((el) => {
-            console.log(el.genre_ids);
             return (
               <CategoryItem
+                type={type}
                 key={el.id}
                 onClick={() => {
+                  dispatch(setType(type));
+                  dispatch(fetchSelectedMovie({ type: type, movieId: el.id }));
+                  dispatch(fetchMovieCredits({ type: type, movieId: el.id }));
                   return navigate('/random');
                 }}
                 title={!el.title ? el.name : el.title}
