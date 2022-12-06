@@ -7,7 +7,7 @@ export const createMovieObject = function (data) {
   return {
     id: data.id,
     backdrop: data.backdrop_path,
-    genres: data.genres,
+    genres: !data.genres ? data.genre_ids : data.genres,
     poster: data.poster_path,
     overview: data.overview !== '' ? data.overview : 'No Storyline Available',
     title: data.title ? data.title : data.name,

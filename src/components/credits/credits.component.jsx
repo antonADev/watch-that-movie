@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Theme from '../../Theme';
 
 import { useFilter } from '../../utils/helperFunctions';
@@ -6,6 +7,7 @@ import { useFilter } from '../../utils/helperFunctions';
 import { CreditTextWrapper, CreditPara } from './credits.styles';
 
 const Credits = ({ releaseDate, crew }) => {
+  const { type } = useSelector((state) => state.selectedMovieData);
   return (
     <Theme>
       <CreditTextWrapper>
@@ -13,9 +15,14 @@ const Credits = ({ releaseDate, crew }) => {
           Release date: <span>{releaseDate}</span>
         </CreditPara>
         <CreditPara>
-          Director:{' '}
+          {type === 'movie' ? 'Director:' : 'Executive Producers:'}{' '}
           <span>
-            {useFilter(crew, 'job', 'Director', 3)}
+            {useFilter(
+              crew,
+              'job',
+              type === 'movie' ? 'Director' : 'Executive Producer',
+              3
+            )}
             {/* {writers
                   ?.filter((el) => el.job === 'Director')
                   .map((el) => el.name)

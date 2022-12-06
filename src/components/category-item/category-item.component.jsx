@@ -8,16 +8,10 @@ import {
   GenrePara,
 } from './category-item.styles';
 
-import { DESKTOP_IMAGE_PATH, MOBILE_IMAGE_PATH } from '../../constants/global';
-
 const CategoryItem = ({ title, year, backdrop, genres, onClick }) => {
   return (
     <Theme>
-      <ImageWrapper
-        onClick={onClick}
-        background={`${
-          window.innerWidth > 768 ? DESKTOP_IMAGE_PATH : MOBILE_IMAGE_PATH
-        }${backdrop}`}>
+      <ImageWrapper onClick={onClick} background={backdrop}>
         <TextWrapper>
           <h1>
             {title}

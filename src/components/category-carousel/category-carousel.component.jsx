@@ -18,7 +18,10 @@ import {
   fetchSelectedMovie,
   setType,
 } from '../../features/selectedMovie/selectedMovieSlice';
-import { setId } from '../../features/selectedMovie/selectedMovieSlice';
+
+import { DESKTOP_IMAGE_PATH, MOBILE_IMAGE_PATH } from '../../constants/global';
+
+import noImage from '../../assets/no-img.png';
 
 const CategoryCarousel = ({ title, category, genresArr, type }) => {
   const dispatch = useDispatch();
@@ -62,10 +65,18 @@ const CategoryCarousel = ({ title, category, genresArr, type }) => {
                   dispatch(fetchMovieCredits({ type: type, movieId: el.id }));
                   return navigate('/random');
                 }}
-                title={!el.title ? el.name : el.title}
-                year={!el.release_date ? el.first_air_date : el.release_date}
-                backdrop={el.backdrop_path}
-                genres={el.genre_ids?.map((genre) => {
+                title={el.title}
+                year={el.release}
+                backdrop={
+                  !el.backdrop && !el.poster
+                    ? `${noImage}`
+                    : `${
+                        window.innerWidth > 768
+                          ? DESKTOP_IMAGE_PATH
+                          : MOBILE_IMAGE_PATH
+                      }${el.backdrop ? el.backdrop : el.poster}`
+                }
+                genres={el.genres?.map((genre) => {
                   const match = genresArr.find((el) => el.id === genre);
                   return match;
                 })}

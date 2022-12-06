@@ -10,6 +10,7 @@ import Theme from '../../Theme';
 import { HomeWrapper, MovieCarousel, CarouselWrapper } from './home.styles';
 import { fetchGenreData } from '../../features/genreSelector/genreSlice';
 import Spinner from '../../components/spinner/spinner.component';
+import { createMovieObject } from '../../utils/helperFunctions';
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 const lang = getLang();
@@ -43,9 +44,11 @@ const Home = () => {
         ]);
         const data = await Promise.all(response.map((r) => r.json()));
 
-        setMovieData(data[0].results);
-        setSeriesData(data[1].results);
+        setMovieData(data[0].results.map((el) => createMovieObject(el)));
+        setSeriesData(data[1].results.map((el) => createMovieObject(el)));
         dispatch(fetchGenreData());
+        console.log(movieData, seriesData);
+        console.log('fetched');
         // setGenreMovieData(data[2].genres);
         // setGenreSeriesData(data[3].genres);
       } catch (error) {}
