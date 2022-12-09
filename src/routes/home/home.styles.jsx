@@ -1,8 +1,13 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const comeIn = (props) => keyframes`
+${props.theme.keyframes.comeIn}
+`;
 
 export const HomeWrapper = styled.div`
   position: relative;
   width: 100vw;
+  animation: ${comeIn} 1s;
 `;
 
 export const CarouselWrapper = styled.div`

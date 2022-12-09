@@ -3,7 +3,7 @@ export const randomize = (number = 500) => {
   else return Math.floor(Math.random() * number);
 };
 
-export const createMovieObject = function (data) {
+export const createMovieObject = (data) => {
   return {
     id: data.id,
     backdrop: data.backdrop_path,
@@ -15,6 +15,18 @@ export const createMovieObject = function (data) {
     voteAverage: data.vote_average,
     voteCount: data.vote_count,
   };
+};
+
+export const createProviderObject = (data) => {
+  return {
+    id: data.provider_id,
+    name: data.provider_name,
+    logoImage: data.logo_path,
+  };
+};
+
+export const getRegion = (string) => {
+  return string.split('-')[1];
 };
 
 export const getLang = () => {

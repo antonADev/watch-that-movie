@@ -15,15 +15,6 @@ export const fetchSelectedMovie = createAsyncThunk(
   'selectedMovieData/fetchSelectedMovie',
   async (myData, { rejectWithValue }) => {
     try {
-      // let end = [];
-      // const data = await fetchMovieDetails(movieId);
-      // console.log(data);
-      // const result = await Promise.all(data);
-      // result.forEach((result) => {
-      //   end = [...result, data.json()];
-      // });
-      // console.log(result);
-      // return end;
       const { type, movieId } = myData;
       const data = await fetch(
         `https://api.themoviedb.org/3/${type}/${movieId}?api_key=${API_KEY}&language=${navigator.language}`
@@ -37,7 +28,7 @@ export const fetchSelectedMovie = createAsyncThunk(
 );
 export const fetchMovieCredits = createAsyncThunk(
   'selectedMovieData/fetchMovieCredits',
-  async (myData, { rejectWithValue, getState }) => {
+  async (myData, { rejectWithValue }) => {
     try {
       const { type, movieId } = myData;
       const data = await fetch(

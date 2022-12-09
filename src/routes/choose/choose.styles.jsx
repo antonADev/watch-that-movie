@@ -2,14 +2,8 @@ import styled, { keyframes } from 'styled-components';
 import { ReactComponent as WaveBg } from '../../assets/wave.svg';
 import img from '../../assets/blob.png';
 
-const comeIn = keyframes`
-0% {
-  opacity: 0;
-}
-
-100% {
-  opacity: 1;
-}
+const comeIn = (props) => keyframes`
+${props.theme.keyframes.comeIn}
 `;
 
 export const ChooseWrapper = styled.div`

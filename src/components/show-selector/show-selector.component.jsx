@@ -44,23 +44,13 @@ const data = {
 
 const ShowSelector = ({ formData, setFormData }) => {
   const dispatch = useDispatch();
-  // const { movieOrTv } = useSelector((state) => state.formData);
+
   const [active, setActive] = useState('');
-  // const [formData, setFormData] = useState({
-  //   movieOrTv: '',
-  //   genre: '',
-  // });
 
   const { movieGenres, seriesGenres, status, message } = useSelector(
     (state) => state.genreData
   );
 
-  // const handleClick = (e) => {
-  //   setActive(e.target.id);
-  //   dispatch(setMovieOrTv(e.target.id));
-  //   dispatch(fetchGenreData(e.target.id));
-  //   console.log(genres);
-  // };
   const handleClick = (e) => {
     setActive(e.target.id);
     setFormData({ movieOrTv: e.target.id, genre: '' });

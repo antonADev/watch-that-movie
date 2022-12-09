@@ -38,6 +38,15 @@ const theme = {
     desktop: `(min-width: ${size.desktop})`,
     desktopL: `(min-width: ${size.desktop})`,
   },
+  keyframes: {
+    comeIn: `0% {
+      opacity: 0;
+    }
+    
+    100% {
+      opacity: 1;
+    }`,
+  },
 };
 
 const Theme = ({ children }) => {

@@ -6,6 +6,9 @@ import ChoiceSelection from '../../components/choice-selection/choice-selection.
 import ChoiceSummary from '../../components/choice-summary/choice-summary.component';
 import Genre from '../../components/selector/selector.component';
 import ShowSelector from '../../components/show-selector/show-selector.component';
+
+import ProviderSelector from '../../components/provider-selector/provider-selector.component';
+
 import Theme from '../../Theme';
 
 import { FormWrapper, ButtonWrapper } from './form.styles';
@@ -13,6 +16,7 @@ import { FormWrapper, ButtonWrapper } from './form.styles';
 const initialState = {
   movieOrTv: '',
   genre: '',
+  providers: [],
 };
 
 const Form = () => {
@@ -21,7 +25,6 @@ const Form = () => {
 
   const handleNext = () => {
     if (page === 0) {
-      console.log();
       if (formData.movieOrTv === '' || formData.genre === '') {
         return alert('all options are mandatory');
       }
@@ -43,6 +46,8 @@ const Form = () => {
           </>
         );
       case 1:
+        return <ProviderSelector formData={formData} setFormData={setFormData} />;
+      case 2:
         return (
           <ChoiceSummary
             title='Selected preferences:'
@@ -80,7 +85,7 @@ const Form = () => {
           </Button>
           <Button
             buttonType={BUTTON_TYPE_CLASSES.base}
-            disabled={page >= 1 ? true : false}
+            disabled={page >= 2 ? true : false}
             onClick={handleNext}>
             Next
           </Button>

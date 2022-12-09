@@ -17,8 +17,6 @@ const lang = getLang();
 const Home = () => {
   const [movieData, setMovieData] = useState([]);
   const [seriesData, setSeriesData] = useState([]);
-  const [genreMovieData, setGenreMovieData] = useState([]);
-  const [genreSeriesData, setGenreSeriesData] = useState([]);
   const dispatch = useDispatch();
 
   const { movieGenres, seriesGenres, status } = useSelector(
@@ -35,12 +33,6 @@ const Home = () => {
           fetch(
             `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=${lang}&page=1`
           ),
-          // fetch(
-          //   `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=${lang}`
-          // ),
-          // fetch(
-          //   `https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=${lang}`
-          // ),
         ]);
         const data = await Promise.all(response.map((r) => r.json()));
 
