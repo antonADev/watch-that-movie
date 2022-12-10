@@ -50,7 +50,11 @@ const Home = () => {
   return (
     <Theme>
       <HomeWrapper>
-        <HomeHero>
+        <HomeHero
+          title={`Don't stress out about what to watch.`}
+          // title={'Every movie you could think of, in one place.'}
+          subtitle={`You know those nights when you waste hours looking for the right
+              movie to watch or the TV series to start? WTM solves the problem.`}>
           <CarouselWrapper>
             {status === 'loading' && <Spinner />}
             {status === 'idle' && (

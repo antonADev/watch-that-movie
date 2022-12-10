@@ -37,26 +37,42 @@
 
 import React, { useRef, useCallback } from 'react';
 
-import { ProviderWrapper } from './provider-item.styles';
+import { UnorderedList, ListItem } from './provider-item.styles';
 
 import { MOBILE_IMAGE_PATH } from '../../constants/global';
 import { useState } from 'react';
 
-const ProviderItem = ({ id, name, logo, value }) => {
+const ProviderItem = ({ id, name, logo, value, formData, setFormData }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [providers, setProviders] = useState([]);
+  const [isActive, setIsActive] = useState(false);
+  const { providers } = formData;
+
   const handleClick = (el) => {
-    const existingProvider = providers.find(
+    if (!providers) {
+      setIsActive(true);
+      setFormData({ ...formData, providers: [el] });
+    }
+
+    const existingProvider = providers?.find(
       (provider) => provider.id === el.id
     );
 
-    if (existingProvider) {
-      return providers.filter((provider) => provider.id !== el.id);
-    } else {
-      return setProviders(...providers, el);
+    if (existingProvider && providers) {
+      setIsActive(false);
+      setFormData({
+        ...formData,
+        providers: providers.filter(
+          (provider) => provider.id !== existingProvider.id
+        ),
+      });
+    }
+
+    if (providers && !existingProvider) {
+      setIsActive(true);
+      setFormData({ ...formData, providers: [...providers, el] });
     }
   };
-  console.log(providers);
+
   const observer = useRef();
   const lastProviderElementRef = useCallback((node) => {
     if (observer.current) observer.current.disconnect();
@@ -75,15 +91,19 @@ const ProviderItem = ({ id, name, logo, value }) => {
   }, []);
 
   return (
-    <ProviderWrapper
-      onClick={() => {
-        handleClick(value);
-      }}
-      isVisible={isVisible ? 'visible' : 'hidden'}
-      ref={lastProviderElementRef}>
-      <img src={`${MOBILE_IMAGE_PATH}${logo}`} alt={`${name} logo`} />
-      <h4>{name}</h4>
-    </ProviderWrapper>
+    <>
+      <ListItem
+        id={id}
+        onClick={() => {
+          handleClick(value);
+        }}
+        isVisible={isVisible ? 'visible' : 'hidden'}
+        isActive={isActive}
+        ref={lastProviderElementRef}>
+        <img src={`${MOBILE_IMAGE_PATH}${logo}`} alt={`${name} logo`} />
+        <p>{name}</p>
+      </ListItem>
+    </>
   );
 };
 

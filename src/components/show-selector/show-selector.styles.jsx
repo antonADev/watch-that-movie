@@ -3,11 +3,12 @@ import img from '../../assets/blob.png';
 
 export const ShowWrapper = styled.div`
   position: relative;
-  height: 80%;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   /* 
   ::before {
     position: absolute;

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { ReactComponent as WaveBg } from '../../assets/wave.svg';
 
-import MovieHero from '../../components/movie-hero/movie-hero.component';
+import HomeHero from '../../components/home-hero/home-hero.component';
+
+import { useDispatch } from 'react-redux';
 
 import Button, {
   BUTTON_TYPE_CLASSES,
 } from '../../components/button/button.component';
-import { ChooseWrapper, MovieHeroWrapper } from './choose.styles';
+import { ChooseWrapper, LinkWrapper } from './choose.styles';
 import { fetchInitialData } from '../../features/randomMovie/randomMovieSlice';
 
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
@@ -31,22 +31,30 @@ const Choose = () => {
 
   return (
     <ChooseWrapper>
-      <Link
-        style={{
-          textDecoration: 'none',
-        }}
-        to='/preferences'>
-        <Button type='button' buttonType={BUTTON_TYPE_CLASSES.base}>
-          Provide us some infos?
-        </Button>
-      </Link>
-      <Link
-        style={{
-          textDecoration: 'none',
-        }}
-        to='/random'>
-        <Button buttonType={BUTTON_TYPE_CLASSES.inverted}>Try your luck</Button>
-      </Link>
+      <HomeHero
+        title={`Aren't you up to something completely random?`}
+        subtitle={`No problem, give us some informations of what you're up to, and we'll try to suggest you something that fits for you`}>
+        <LinkWrapper>
+          <Link
+            style={{
+              textDecoration: 'none',
+            }}
+            to='/preferences'>
+            <Button type='button' buttonType={BUTTON_TYPE_CLASSES.base}>
+              Provide us some infos?
+            </Button>
+          </Link>
+          <Link
+            style={{
+              textDecoration: 'none',
+            }}
+            to='/random'>
+            <Button buttonType={BUTTON_TYPE_CLASSES.inverted}>
+              Try your luck
+            </Button>
+          </Link>
+        </LinkWrapper>
+      </HomeHero>
     </ChooseWrapper>
   );
 };

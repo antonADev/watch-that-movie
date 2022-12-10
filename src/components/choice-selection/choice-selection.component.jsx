@@ -7,10 +7,10 @@ import {
   ChoiceSelectionInnerWrapper,
 } from './choice-selection.styles';
 
-const ChoiceSelection = ({ title, children }) => {
+const ChoiceSelection = ({ title, children, size, justify }) => {
   return (
     <Theme>
-      <ChoiceSelectionWrapper>
+      <ChoiceSelectionWrapper justify={justify} size={size}>
         <ChoiceSelectionHeader>{title}</ChoiceSelectionHeader>
         <ChoiceSelectionInnerWrapper>{children}</ChoiceSelectionInnerWrapper>
       </ChoiceSelectionWrapper>
