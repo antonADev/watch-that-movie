@@ -1,11 +1,15 @@
 import React from 'react';
 
-const ProviderSelected = () => {
+import { ListItem } from './provider-selected.styles';
+
+import { MOBILE_IMAGE_PATH } from '../../constants/global';
+const ProviderSelected = ({ logo, name, removeHandler }) => {
   return (
     <>
-      <li>
-        <img src='' alt='' />
-      </li>
+      <ListItem onClick={removeHandler}>
+        <img src={`${MOBILE_IMAGE_PATH}${logo}`} alt={`${name} logo`} />
+        <p>{name}</p>
+      </ListItem>
     </>
   );
 };

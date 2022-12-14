@@ -9,11 +9,16 @@ export const StorylineWrapper = styled.div`
   color: ${(props) => props.theme.colors.main};
 `;
 
-export const StorylineHeader = styled.div`
+export const StorylineHeaderWrapper = styled.div`
+  width: 100%;
+`;
+
+export const StorylineHeader = styled.h3`
   font-weight: 600;
+  font-size: clamp(1.1rem, -0.875rem + 4.333vw, 1.6rem);
 `;
 
 export const StorylinePara = styled.div`
-  font-size: 0.8rem;
+  font-size: clamp(0.8rem, -0.875rem + 4.333vw, 1.1rem);
   color: ${(props) => props.theme.colors.lightGrey};
 `;

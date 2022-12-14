@@ -49,7 +49,7 @@ export const TextWrapper = styled.div`
     font-weight: 600;
     span {
       color: gray;
-      font-size: clamp(0.9rem, -0.875rem + 4.333vw, 1.1.8rem);
+      font-size: clamp(0.9rem, -0.875rem + 4.333vw, 1.8rem);
       font-weight: 400;
     }
   }

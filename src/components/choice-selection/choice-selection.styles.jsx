@@ -5,7 +5,7 @@ const popIn = keyframes`
 }
 
 100% {
-  transform: translate(0,0);
+  transform: translate(0, 0);
 }
 `;
 
@@ -15,14 +15,14 @@ export const ChoiceSelectionWrapper = styled.div`
   flex-direction: column;
   justify-content: ${(props) => (props.justify ? 'flex-start' : 'center')};
   align-items: center;
-  height: ${(props) => (props.size === 'big' ? '400px' : '200px')};
+  height: ${(props) => (props.size === 'big' ? '300px' : '200px')};
   width: 80%;
   transition: all 0.5s;
   border: 1px solid ${(props) => props.theme.colors.main};
   border-radius: 15px;
   margin: 1rem;
   box-shadow: 0 8px 20px 0 ${(props) => props.theme.colors.veryLight};
-  transform: translate(0, 0);
+  transform: none;
   :not(:first-child) {
     animation: ${popIn} 0.5s;
   }

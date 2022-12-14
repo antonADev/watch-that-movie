@@ -19,7 +19,8 @@ function App() {
           {/* <Route path='/' element={<Welcome />} /> */}
           <Route path='/' element={<Navigation />}>
             <Route index element={<Home />} />
-            <Route path='/choose' element={<Choose />} />
+            {/* <Route path='/choose' element={<Choose />} /> */}
+            <Route path='/choose' element={<Form />} />
             <Route path='/random' element={<RandomMovie />} />
             <Route path='/preferences' element={<Form />} /> */
             {/* <Route path='/selected' element={<MovieCard />} /> */}

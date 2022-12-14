@@ -11,6 +11,11 @@ export const DataWrapper = styled.div`
   & > * {
     margin: 1rem;
   }
+
+  @media ${(props) => props.theme.deviceMin.tablet} {
+    margin-top: 2rem;
+    flex-direction: row;
+  }
 `;
 
 export const CreditWrapper = styled.div`
@@ -20,4 +25,8 @@ export const CreditWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media ${(props) => props.theme.deviceMin.tablet} {
+    justify-content: space-around;
+  }
 `;

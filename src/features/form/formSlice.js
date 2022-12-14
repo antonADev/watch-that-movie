@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   movieOrTv: '',
   genre: '',
+  providers: [],
 };
 
 export const formSlice = createSlice({
@@ -15,9 +16,12 @@ export const formSlice = createSlice({
     setGenre: (state, action) => {
       state.genre = action.payload;
     },
+    setProviders: (state, action) => {
+      state.providers = action.payload;
+    },
   },
 });
 
-export const { setMovieOrTv, setGenre } = formSlice.actions;
+export const { setMovieOrTv, setGenre, setProviders } = formSlice.actions;
 
 export default formSlice.reducer;

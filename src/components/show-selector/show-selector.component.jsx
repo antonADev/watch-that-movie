@@ -43,7 +43,7 @@ const ShowSelector = ({ formData, setFormData }) => {
           <Button
             buttonType={BUTTON_TYPE_CLASSES.inverted}
             id='movie'
-            //Express in pixels without px, just number
+            //Express in pixels without px, just the number
             minWidth={'100'}
             isActive={formData.movieOrTv === 'movie' ? true : false}
             onClick={handleClick}>
