@@ -13,7 +13,6 @@ export const DataWrapper = styled.div`
   }
 
   @media ${(props) => props.theme.deviceMin.tablet} {
-    margin-top: 2rem;
     flex-direction: row;
   }
 `;

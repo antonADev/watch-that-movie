@@ -62,7 +62,7 @@ const CategoryCarousel = ({ title, category, genresArr, type }) => {
                 onClick={() => {
                   dispatch(setType(type));
                   dispatch(fetchSelectedMovie({ type: type, movieId: el.id }));
-                  dispatch(fetchMovieCredits({ type: type, movieId: el.id }));
+                  // dispatch(fetchMovieCredits({ type: type, movieId: el.id }));
                   return navigate('/random');
                 }}
                 title={el.title}

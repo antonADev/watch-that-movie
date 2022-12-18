@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import img from '../../assets/blob.png';
 export const FormWrapper = styled.div`
   position: relative;
-  height: 100vh;
-  ::before {
+  width: 100vw;
+  margin-bottom: 2rem;
+  /* ::before {
     position: absolute;
     content: '';
     background: url(${img}) no-repeat center center/cover;
@@ -13,7 +14,7 @@ export const FormWrapper = styled.div`
     width: 100vw;
     height: 100vh;
     z-index: -1;
-  }
+  } */
 `;
 
 export const ButtonWrapper = styled.div`

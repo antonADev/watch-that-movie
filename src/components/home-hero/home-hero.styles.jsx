@@ -4,7 +4,8 @@ export const HomeHeroWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
+
+  height: 100%;
 `;
 
 export const ImageWrapper = styled.div`
@@ -16,9 +17,10 @@ export const ImageWrapper = styled.div`
   font-family: ${(props) => props.theme.fonts[2]};
   position: relative;
   background-color: ${(props) => props.theme.colors.main};
-  max-height: 350px;
-  height: 33vmax;
+  height: 30vh;
+  max-height: 600px;
   width: 100%;
+
   border-radius: 0 0 30px 30px;
   z-index: -1;
   overflow: hidden;

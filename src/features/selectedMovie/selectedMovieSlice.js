@@ -17,7 +17,7 @@ export const fetchSelectedMovie = createAsyncThunk(
     try {
       const { type, movieId } = myData;
       const data = await fetch(
-        `https://api.themoviedb.org/3/${type}/${movieId}?api_key=${API_KEY}&language=${navigator.language}`
+        `https://api.themoviedb.org/3/${type}/${movieId}?api_key=${API_KEY}&language=${navigator.language}&append_to_response=videos,credits`
       );
 
       const res = await data.json();
@@ -26,21 +26,37 @@ export const fetchSelectedMovie = createAsyncThunk(
     } catch (error) {}
   }
 );
-export const fetchMovieCredits = createAsyncThunk(
-  'selectedMovieData/fetchMovieCredits',
-  async (myData, { rejectWithValue }) => {
-    try {
-      const { type, movieId } = myData;
-      const data = await fetch(
-        `https://api.themoviedb.org/3/${type}/${movieId}/credits?api_key=${API_KEY}&language=${navigator.language}`
-      );
 
-      const res = await data.json();
-      console.log(res);
-      return res;
-    } catch (error) {}
-  }
-);
+// export const fetchSelectedMovie = createAsyncThunk(
+//   'selectedMovieData/fetchSelectedMovie',
+//   async (myData, { rejectWithValue }) => {
+//     try {
+//       const { type, movieId } = myData;
+//       const data = await fetch(
+//         `https://api.themoviedb.org/3/${type}/${movieId}?api_key=${API_KEY}&language=${navigator.language}`
+//       );
+
+//       const res = await data.json();
+//       console.log(res);
+//       return createMovieObject(res);
+//     } catch (error) {}
+//   }
+// );
+// export const fetchMovieCredits = createAsyncThunk(
+//   'selectedMovieData/fetchMovieCredits',
+//   async (myData, { rejectWithValue }) => {
+//     try {
+//       const { type, movieId } = myData;
+//       const data = await fetch(
+//         `https://api.themoviedb.org/3/${type}/${movieId}/credits?api_key=${API_KEY}&language=${navigator.language}`
+//       );
+
+//       const res = await data.json();
+//       console.log(res);
+//       return res;
+//     } catch (error) {}
+//   }
+// );
 
 const selectedMovieSlice = createSlice({
   name: 'selectedMovieData',
@@ -66,19 +82,19 @@ const selectedMovieSlice = createSlice({
       .addCase(fetchSelectedMovie.rejected, (state, action) => {
         state.status = 'error';
         state.message = action.payload;
-      })
-      .addCase(fetchMovieCredits.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchMovieCredits.fulfilled, (state, action) => {
-        console.log(action.payload);
-        state.status = 'idle';
-        state.credits = action.payload;
-      })
-      .addCase(fetchMovieCredits.rejected, (state, action) => {
-        state.status = 'error';
-        state.message = action.payload;
       });
+    // .addCase(fetchMovieCredits.pending, (state) => {
+    //   state.status = 'loading';
+    // })
+    // .addCase(fetchMovieCredits.fulfilled, (state, action) => {
+    //   console.log(action.payload);
+    //   state.status = 'idle';
+    //   state.credits = action.payload;
+    // })
+    // .addCase(fetchMovieCredits.rejected, (state, action) => {
+    //   state.status = 'error';
+    //   state.message = action.payload;
+    // });
   },
 });
 export const { setId, setType } = selectedMovieSlice.actions;

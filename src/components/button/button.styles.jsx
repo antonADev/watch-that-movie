@@ -21,13 +21,15 @@ export const BaseButton = styled.button`
   align-items: center;
   transition: all 0.5s;
 
-  &:hover {
-    background-color: ${(props) =>
-      props.disabled ? props.theme.colors.veryLight : 'transparent'};
-    color: ${(props) =>
-      props.disabled ? props.theme.colors.white : props.theme.colors.main};
+  @media (hover: hover) {
+    &:hover {
+      background-color: ${(props) =>
+        props.disabled ? props.theme.colors.veryLight : 'transparent'};
+      color: ${(props) =>
+        props.disabled ? props.theme.colors.white : props.theme.colors.main};
 
-    ${(props) => (props.disabled ? '' : 'border: 1px solid #8f44fd')};
+      ${(props) => (props.disabled ? '' : 'border: 1px solid #8f44fd')};
+    }
   }
 `;
 
@@ -38,9 +40,11 @@ export const InvertedButton = styled(BaseButton)`
     props.isActive ? 'white' : `${props.theme.colors.main}`};
   border: 1px solid ${(props) => props.theme.colors.main};
 
-  &:hover {
-    background-color: ${(props) => props.theme.colors.veryLight};
+  @media (hover: hover) {
+    &:hover {
+      background-color: ${(props) => props.theme.colors.veryLight};
 
-    border: 1px solid ${(props) => props.theme.colors.main};
+      border: 1px solid ${(props) => props.theme.colors.main};
+    }
   }
 `;

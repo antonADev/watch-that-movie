@@ -8,10 +8,11 @@ export const MovieCardWrapper = styled.div`
 `;
 
 export const MovieHeroWrapper = styled.div`
-  overflow: hidden;
-  position: relative;
-  /* min-height: 32vh; */
-  height: 32vmax;
+  /* overflow: hidden;
+  position: relative; */
+  /* height: 30vh; */
+  /* height: 30vmax;
+  max-height: 700px; */
 `;
 
 export const MovieDataWrapper = styled.div`
@@ -19,6 +20,9 @@ export const MovieDataWrapper = styled.div`
 
   display: flex;
   flex-direction: column;
+  & > * {
+    margin: 2rem 0;
+  }
 `;
 
 export const ProfileCarousel = styled.div`

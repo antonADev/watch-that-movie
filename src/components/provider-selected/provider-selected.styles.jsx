@@ -5,6 +5,7 @@ export const ListItem = styled.li`
   justify-content: center;
   align-items: center;
   margin: 0.3rem 0;
+  width: 100%;
   img {
     margin-right: 0.5rem;
     max-width: 20px;

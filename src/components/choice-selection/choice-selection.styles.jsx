@@ -15,17 +15,17 @@ export const ChoiceSelectionWrapper = styled.div`
   flex-direction: column;
   justify-content: ${(props) => (props.justify ? 'flex-start' : 'center')};
   align-items: center;
-  height: ${(props) => (props.size === 'big' ? '300px' : '200px')};
+  min-height: ${(props) => (props.size === 'big' ? '300px' : '200px')};
   width: 80%;
   transition: all 0.5s;
   border: 1px solid ${(props) => props.theme.colors.main};
   border-radius: 15px;
   margin: 1rem;
   box-shadow: 0 8px 20px 0 ${(props) => props.theme.colors.veryLight};
-  transform: none;
+  /* transform: none;
   :not(:first-child) {
     animation: ${popIn} 0.5s;
-  }
+  } */
 `;
 
 export const ChoiceSelectionHeader = styled.h2`

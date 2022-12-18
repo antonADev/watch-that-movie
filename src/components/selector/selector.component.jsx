@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setGenre } from '../../features/form/formSlice';
+import Theme from '../../Theme';
 
 import {
   SelectContainer,
@@ -32,21 +32,23 @@ const Genre = ({ label, values, onChange, formData, setFormData }) => {
     handleClose();
   };
   return (
-    <SelectContainer>
-      <SelectLabelButton onClick={handleOpen}>
-        {currentValue ? currentValue : label}
-      </SelectLabelButton>
-      <DropdownStyle isVisible={open}>
-        {values.map((value, index) => (
-          <DropdownItem
-            onClick={() => handleChange(value)}
-            active={value.name === currentValue}
-            key={index}>
-            {value.name}
-          </DropdownItem>
-        ))}
-      </DropdownStyle>
-    </SelectContainer>
+    <Theme>
+      <SelectContainer>
+        <SelectLabelButton onClick={handleOpen}>
+          {currentValue ? currentValue : label}
+        </SelectLabelButton>
+        <DropdownStyle isVisible={open}>
+          {values.map((value, index) => (
+            <DropdownItem
+              onClick={() => handleChange(value)}
+              active={value.name === currentValue}
+              key={index}>
+              {value.name}
+            </DropdownItem>
+          ))}
+        </DropdownStyle>
+      </SelectContainer>
+    </Theme>
   );
 };
 

@@ -10,7 +10,7 @@ export const CreditTextWrapper = styled.div`
 
 export const CreditPara = styled.p`
   text-align: left;
-  font-size: clamp(0.8rem, -0.875rem + 4.333vw, 1.2rem);
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
 
   span {
     font-weight: 700;

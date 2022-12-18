@@ -50,6 +50,7 @@ export const NextButton = styled.button`
   transform: translate(-50%, -50%);
 `;
 export const PreviousButton = styled(NextButton)`
+  right: auto;
   left: 0;
   transform: translate(50%, -50%);
 `;

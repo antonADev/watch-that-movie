@@ -13,10 +13,10 @@ export const SelectLabelButton = styled.button`
   background-color: #fff;
   border: none;
   border-radius: 5px;
-  color: hsl(264, 98%, 63%);
+  color: ${(props) => props.theme.colors.main};
   align-items: center;
   justify-content: space-between;
-  border: 1px solid hsl(264, 98%, 63%);
+  border: 1px solid ${(props) => props.theme.colors.main};
   cursor: pointer;
   box-shadow: 0 1px 4px 0 #ccc;
   transition: 0.3s ease;
@@ -28,7 +28,7 @@ export const SelectLabelButton = styled.button`
 export const DropdownStyle = styled.div`
   position: absolute;
   top: 0;
-  left: 0;
+  left: -34%;
   max-height: 20vmax;
   min-width: 12rem;
   padding: 0.4rem;
@@ -36,7 +36,7 @@ export const DropdownStyle = styled.div`
   flex-direction: column;
   border-radius: 5px;
   background: #fafafa;
-  border: 1.5px solid hsl(264, 98%, 63%);
+  border: 1.5px solid ${(props) => props.theme.colors.main};
   transition: max-height 0.2s ease;
   overflow: scroll;
   ${(p) =>
@@ -45,6 +45,10 @@ export const DropdownStyle = styled.div`
       max-height: 40px;
       visibility: hidden;
     `}
+
+  @media ${(props) => props.theme.deviceMin.tablet} {
+    max-height: 10vmax;
+  }
 `;
 
 export const DropdownItem = styled.div`
@@ -57,16 +61,16 @@ export const DropdownItem = styled.div`
   padding: 0.3rem 0.5rem;
   font-size: 0.9rem;
   font-weight: 400;
-  color: hsl(264, 98%, 63%);
+  color: ${(props) => props.theme.colors.main};
   border-radius: 0.3rem;
   cursor: pointer;
   ${(p) =>
     p.active &&
     css`
-      color: hsl(264, 98%, 63%);
+      color: ${(props) => props.theme.colors.main};
       font-weight: 500;
     `}&:hover, :focus, :focus:hover {
-    background-color: hsl(264, 98%, 63%);
+    background-color: ${(props) => props.theme.colors.main};
     color: #fafafa;
     outline: none;
   }

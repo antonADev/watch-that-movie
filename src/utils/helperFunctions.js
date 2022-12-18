@@ -7,11 +7,13 @@ export const createMovieObject = (data) => {
   return {
     id: data.id,
     backdrop: data.backdrop_path,
+    credits: data.credits,
     genres: !data.genres ? data.genre_ids : data.genres,
     poster: data.poster_path,
     overview: data.overview !== '' ? data.overview : 'No Storyline Available',
     title: data.title ? data.title : data.name,
     release: data.release_date ? data.release_date : data.first_air_date,
+    trailer: data.videos,
     voteAverage: data.vote_average,
     voteCount: data.vote_count,
   };

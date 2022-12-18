@@ -8,6 +8,7 @@ import {
   Input,
   ListWrapper,
   UnorderedList,
+  SelectedList,
 } from './provider-selector.styles';
 
 import ProviderItem from '../provider-item/provider-item.component';
@@ -108,16 +109,18 @@ const ProviderSelector = ({ formData, setFormData }) => {
             </UnorderedList>
           )}
         </ListWrapper>
-        {providers?.map((provider) => (
-          <ProviderSelected
-            key={provider.id}
-            removeHandler={() => {
-              handleRemove(provider);
-            }}
-            name={provider.name}
-            logo={provider.logoImage}
-          />
-        ))}
+        <SelectedList>
+          {providers?.map((provider) => (
+            <ProviderSelected
+              key={provider.id}
+              removeHandler={() => {
+                handleRemove(provider);
+              }}
+              name={provider.name}
+              logo={provider.logoImage}
+            />
+          ))}
+        </SelectedList>
       </ProviderSelectorWrapper>
     </Theme>
   );

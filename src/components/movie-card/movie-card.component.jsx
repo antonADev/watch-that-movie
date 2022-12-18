@@ -28,6 +28,11 @@ const MovieCard = ({ status, movie, credits, message }) => {
               //Year original format yyyy-dd-mm
               year={movie.release}
               backdrop={!movie.backdrop ? movie.poster : movie.backdrop}
+              video={
+                movie.trailer.results.filter(
+                  (el) => el.type === 'Teaser' || el.type === 'Trailer'
+                )[0]
+              }
             />
           </MovieHeroWrapper>
           <MovieDataWrapper>
@@ -36,11 +41,11 @@ const MovieCard = ({ status, movie, credits, message }) => {
               voteCount={movie.voteCount}
               releaseDate={movie.release}
               poster={movie.poster}
-              crew={credits.crew}
+              crew={movie.credits.crew}
             />
             <Storyline text={movie.overview} />
             <ProfileCarousel>
-              {credits.cast?.map((el) => (
+              {movie.credits.cast?.map((el) => (
                 <PeopleCarousel
                   key={el.id}
                   imagePath={

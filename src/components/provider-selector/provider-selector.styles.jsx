@@ -15,6 +15,7 @@ export const Input = styled.input`
   border: 1px solid ${(props) => props.theme.colors.main};
   border-radius: 25px;
   padding: 1rem;
+  width: 80%;
   :focus,
   :active {
     border: 1px solid ${(props) => props.theme.colors.main};
@@ -43,4 +44,8 @@ export const UnorderedList = styled.ul`
   min-width: 280px;
   width: 280px;
   overflow-y: scroll;
+`;
+
+export const SelectedList = styled.div`
+  margin: 1rem;
 `;

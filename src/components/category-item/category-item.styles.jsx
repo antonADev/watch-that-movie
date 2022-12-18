@@ -46,7 +46,7 @@ export const TextWrapper = styled.div`
   );
   h1 {
     margin: 0;
-    font-size: clamp(1.5rem, -0.875rem + 6.333vw, 3rem);
+    font-size: clamp(1.5rem, -0.875rem + 6.333vw, 1.8rem);
     font-weight: 600;
     span {
       color: gray;
