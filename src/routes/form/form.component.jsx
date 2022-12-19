@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   fetchSelectedMovie,
   fetchMovieCredits,
+  setId,
 } from '../../features/selectedMovie/selectedMovieSlice';
 
 import { fetchPreferredMovie } from '../../features/preferredMovie/preferredMovieSlice';
@@ -36,65 +37,46 @@ const Form = () => {
   const navigate = useNavigate();
   const { data } = useSelector((state) => state.preferredMovieData);
 
-  useEffect(() => {
-    if (!data) return;
-    dispatch(fetchSelectedMovie({ type: formData.movieOrTv, movieId: data }));
-    navigate('/random');
-  }, [data]);
+  // useEffect(() => {
+  //   if (!data) return;
+
+  //   dispatch(fetchSelectedMovie());
+  // }, [data]);
 
   const getMovie = () => {
-    return dispatch(
+    dispatch(
       fetchPreferredMovie({
         type: formData.movieOrTv,
         genre: formData.genre,
         providers: formData.providers,
       })
-    );
-  };
-
-  // const getMovie = async () => {
-  //   try {
-  //     await Promise.all([
-  //       dispatch(
-  //         fetchPreferredMovie({
-  //           type: formData.movieOrTv,
-  //           genre: formData.genre,
-  //           providers: formData.providers,
-  //         })
-  //       ),
-  //     ]);
-  //     dispatch(fetchSelectedMovie({ type: formData.movieOrTv, movieId: data }));
-  //   } catch (error) {}
-
-  //   console.log(data);
-  //   // .then(() => {
-  //   //   return dispatch(
-  //   //     fetchSelectedMovie({ type: formData.movieOrTv, movieId: data })
-  //   //   );
-  //   // });
-  // };
-
-  const handleNext = () => {
-    if (page === 0) {
-      if (
-        formData.movieOrTv === '' ||
-        formData.genre === '' ||
-        !formData.providers
-      ) {
-        return alert('all options are mandatory');
-      }
-    }
-
-    if (page === 1) {
-      dispatch(fetchSelectedMovie({ type: formData.movieOrTv, movieId: data }));
+    ).then(() => {
+      dispatch(setId(data));
       return navigate('/random');
-    }
-    return setPage(page + 1);
+    });
   };
-  const handlePrevious = () => {
-    // if (page === ) return;
-    return setPage(page - 1);
-  };
+
+  // const handleNext = () => {
+  //   if (page === 0) {
+  //     if (
+  //       formData.movieOrTv === '' ||
+  //       formData.genre === '' ||
+  //       !formData.providers
+  //     ) {
+  //       return alert('all options are mandatory');
+  //     }
+  //   }
+
+  //   if (page === 1) {
+  //     dispatch(fetchSelectedMovie({ type: formData.movieOrTv, movieId: data }));
+  //     return navigate('/random');
+  //   }
+  //   return setPage(page + 1);
+  // };
+  // const handlePrevious = () => {
+  //   // if (page === ) return;
+  //   return setPage(page - 1);
+  // };
 
   const conditionalComponent = () => {
     console.log(data);
@@ -137,7 +119,7 @@ const Form = () => {
           {conditionalComponent()}
           {formData.providers?.[0] && (
             <ButtonWrapper>
-              <Button
+              {/* <Button
                 buttonType={BUTTON_TYPE_CLASSES.base}
                 disabled={page <= 0 ? true : false}
                 onClick={handlePrevious}>
@@ -148,6 +130,9 @@ const Form = () => {
                 disabled={page >= 2 ? true : false}
                 onClick={getMovie}>
                 Next
+              </Button> */}
+              <Button buttonType={BUTTON_TYPE_CLASSES.base} onClick={getMovie}>
+                Surprise Me
               </Button>
             </ButtonWrapper>
           )}

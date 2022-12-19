@@ -18,6 +18,7 @@ import Theme from '../../Theme';
 import { ShowWrapper } from './show-selector.styles';
 import Spinner from '../spinner/spinner.component';
 import ProviderSelector from '../provider-selector/provider-selector.component';
+import { setType } from '../../features/selectedMovie/selectedMovieSlice';
 
 const ShowSelector = ({ formData, setFormData }) => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const ShowSelector = ({ formData, setFormData }) => {
   const handleClick = (e) => {
     setActive(e.target.id);
     setFormData({ movieOrTv: e.target.id, genre: '' });
-    // dispatch(setMovieOrTv(e.target.id));
+    dispatch(setType(e.target.id));
     dispatch(fetchGenreData());
   };
 

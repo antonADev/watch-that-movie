@@ -13,11 +13,13 @@ const initialState = {
 
 export const fetchSelectedMovie = createAsyncThunk(
   'selectedMovieData/fetchSelectedMovie',
-  async (myData, { rejectWithValue }) => {
+  async (myData, { rejectWithValue, getState }) => {
     try {
-      const { type, movieId } = myData;
+      // const { type, movieId } = myData;
+      const state = getState();
+      console.log(state.selectedMovieData);
       const data = await fetch(
-        `https://api.themoviedb.org/3/${type}/${movieId}?api_key=${API_KEY}&language=${navigator.language}&append_to_response=videos,credits`
+        `https://api.themoviedb.org/3/${state.selectedMovieData.type}/${state.selectedMovieData.id}?api_key=${API_KEY}&language=${navigator.language}&append_to_response=videos,credits`
       );
 
       const res = await data.json();
@@ -26,37 +28,6 @@ export const fetchSelectedMovie = createAsyncThunk(
     } catch (error) {}
   }
 );
-
-// export const fetchSelectedMovie = createAsyncThunk(
-//   'selectedMovieData/fetchSelectedMovie',
-//   async (myData, { rejectWithValue }) => {
-//     try {
-//       const { type, movieId } = myData;
-//       const data = await fetch(
-//         `https://api.themoviedb.org/3/${type}/${movieId}?api_key=${API_KEY}&language=${navigator.language}`
-//       );
-
-//       const res = await data.json();
-//       console.log(res);
-//       return createMovieObject(res);
-//     } catch (error) {}
-//   }
-// );
-// export const fetchMovieCredits = createAsyncThunk(
-//   'selectedMovieData/fetchMovieCredits',
-//   async (myData, { rejectWithValue }) => {
-//     try {
-//       const { type, movieId } = myData;
-//       const data = await fetch(
-//         `https://api.themoviedb.org/3/${type}/${movieId}/credits?api_key=${API_KEY}&language=${navigator.language}`
-//       );
-
-//       const res = await data.json();
-//       console.log(res);
-//       return res;
-//     } catch (error) {}
-//   }
-// );
 
 const selectedMovieSlice = createSlice({
   name: 'selectedMovieData',
