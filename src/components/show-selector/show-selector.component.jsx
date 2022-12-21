@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setMovieOrTv, setGenre } from '../../features/form/formSlice';
-
-import { setGenreBasedOnShow } from '../../features/genreSelector/genreSlice';
-
 import { fetchGenreData } from '../../features/genreSelector/genreSlice';
 
 import Button, {

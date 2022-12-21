@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import {
   CategoryWrapper,
+  DetailLink,
   CategoryTitle,
   CategoryDataWrapper,
   NextButton,
@@ -17,6 +18,7 @@ import {
   fetchMovieCredits,
   fetchSelectedMovie,
   setType,
+  setId,
 } from '../../features/selectedMovie/selectedMovieSlice';
 
 import { DESKTOP_IMAGE_PATH, MOBILE_IMAGE_PATH } from '../../constants/global';
@@ -27,7 +29,6 @@ const CategoryCarousel = ({ title, category, genresArr, type }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
-
   const handleClick = (index) => {
     if (index < 0) {
       index = 0;
@@ -44,7 +45,9 @@ const CategoryCarousel = ({ title, category, genresArr, type }) => {
 
   return (
     <CategoryWrapper>
-      <CategoryTitle>{title}</CategoryTitle>
+      <Link to={type}>
+        <CategoryTitle>{title}</CategoryTitle>
+      </Link>
       <CarouselWrapper>
         <PreviousButton
           onClick={() => {
@@ -57,13 +60,18 @@ const CategoryCarousel = ({ title, category, genresArr, type }) => {
           {category?.map((el) => {
             return (
               <CategoryItem
+                id={el.id}
                 type={type}
                 key={el.id}
                 onClick={() => {
+                  dispatch(setId(el.id));
                   dispatch(setType(type));
-                  dispatch(fetchSelectedMovie({ type: type, movieId: el.id }));
-                  // dispatch(fetchMovieCredits({ type: type, movieId: el.id }));
-                  return navigate('/random');
+                  dispatch(fetchSelectedMovie());
+                  // return navigate('/random/:id', {
+                  //   state: {
+                  //     id: el.id,
+                  //   },
+                  // });
                 }}
                 title={el.title}
                 year={el.release}

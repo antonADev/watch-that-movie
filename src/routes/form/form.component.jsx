@@ -21,8 +21,9 @@ import HomeHero from '../../components/home-hero/home-hero.component';
 
 import Theme from '../../Theme';
 
-import { FormWrapper, ButtonWrapper } from './form.styles';
+import { FormWrapper, DetailLink, ButtonWrapper } from './form.styles';
 import { useEffect } from 'react';
+import { useCallback } from 'react';
 
 const initialState = {
   movieOrTv: '',
@@ -32,28 +33,44 @@ const initialState = {
 
 const Form = () => {
   const [page, setPage] = useState(0);
+  // const [navLink, setNavLink] = useState('/choose');
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { data } = useSelector((state) => state.preferredMovieData);
+  const { data, status } = useSelector((state) => state.preferredMovieData);
+  console.log(data);
+  // const redirect = useCallback(() => {
+  //   navigate(navLink, { replace: true });
+  // }, [navigate, navLink]);
+
+  // useEffect(() => {
+  //   if (!page) return;
+  //   navigate('/random');
+  //   setPage(false);
+  // }, [page]);
+
+  // useEffect(() => {
+  //   redirect(navLink);
+  // }, [navLink, redirect]);
 
   // useEffect(() => {
   //   if (!data) return;
-
-  //   dispatch(fetchSelectedMovie());
+  //   dispatch(setId(data));
   // }, [data]);
 
   const getMovie = () => {
-    dispatch(
+    return dispatch(
       fetchPreferredMovie({
         type: formData.movieOrTv,
         genre: formData.genre,
         providers: formData.providers,
       })
-    ).then(() => {
-      dispatch(setId(data));
-      return navigate('/random');
+    ).then((res) => {
+      navigate(`/${formData.movieOrTv}/${res.payload}`);
     });
+    // .then((res) => dispatch(setId(res.payload)))
+    // .then(() => dispatch(fetchSelectedMovie()))
+    // .then(() => navigate('/random'));
   };
 
   // const handleNext = () => {
@@ -79,7 +96,6 @@ const Form = () => {
   // };
 
   const conditionalComponent = () => {
-    console.log(data);
     switch (page) {
       case 0:
         return (
@@ -109,7 +125,7 @@ const Form = () => {
         );
     }
   };
-  console.log(data);
+
   return (
     <Theme>
       <FormWrapper>
@@ -131,7 +147,12 @@ const Form = () => {
                 onClick={getMovie}>
                 Next
               </Button> */}
-              <Button buttonType={BUTTON_TYPE_CLASSES.base} onClick={getMovie}>
+
+              <Button
+                buttonType={BUTTON_TYPE_CLASSES.base}
+                onClick={() => {
+                  getMovie();
+                }}>
                 Surprise Me
               </Button>
             </ButtonWrapper>

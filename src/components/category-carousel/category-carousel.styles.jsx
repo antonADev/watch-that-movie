@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 export const CategoryWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -9,6 +9,12 @@ export const CategoryWrapper = styled.div`
   min-width: 320px;
   overflow: hidden;
   margin: 5% 0 0 0;
+`;
+
+export const DetailLink = styled(Link)`
+  display: flex;
+  border-radius: 30px;
+  width: fit-content;
 `;
 
 export const CategoryTitle = styled.h3`

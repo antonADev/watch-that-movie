@@ -12,13 +12,12 @@
 
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import randomMovieSliceReducer from '../features/randomMovie/randomMovieSlice';
-import movieSliceReducer from '../features/movie/movieSlice';
 import welcomeSliceReducer from '../features/welcome/welcomeSlice';
-import formSliceReducer from '../features/form/formSlice';
 import genreSliceReducer from '../features/genreSelector/genreSlice';
-import creditsSliceReducer from '../features/credits/creditSlice';
 import selectedMovieSliceReducer from '../features/selectedMovie/selectedMovieSlice';
 import preferredMovieSliceReducer from '../features/preferredMovie/preferredMovieSlice';
+import tvShowsSliceReducer from '../features/tvShows/tvShowsSlice';
+import moviesSliceReducer from '../features/movies/moviesSlice';
 import {
   persistStore,
   persistReducer,
@@ -38,15 +37,23 @@ const persistConfig = {
   whitelist: ['welcome'],
 };
 
+const moviePersistConfig = {
+  key: 'selectedMovieData',
+  storage,
+  whitelist: ['data'],
+};
+
 const rootReducer = combineReducers({
   randomMovieData: randomMovieSliceReducer,
-  movieData: movieSliceReducer,
   welcome: welcomeSliceReducer,
-  formData: formSliceReducer,
   genreData: genreSliceReducer,
-  creditsData: creditsSliceReducer,
-  selectedMovieData: selectedMovieSliceReducer,
+  selectedMovieData: persistReducer(
+    moviePersistConfig,
+    selectedMovieSliceReducer
+  ),
   preferredMovieData: preferredMovieSliceReducer,
+  tvShowsData: tvShowsSliceReducer,
+  moviesData: moviesSliceReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

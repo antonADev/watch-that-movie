@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes, useParams } from 'react-router-dom';
 
 import { getLang } from '../../utils/helperFunctions';
 
@@ -11,6 +12,8 @@ import { HomeWrapper, MovieCarousel, CarouselWrapper } from './home.styles';
 import { fetchGenreData } from '../../features/genreSelector/genreSlice';
 import Spinner from '../../components/spinner/spinner.component';
 import { createMovieObject } from '../../utils/helperFunctions';
+import { fetchTvShows } from '../../features/tvShows/tvShowsSlice';
+import MovieList from '../movieList/movieList.component';
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 const lang = getLang();
@@ -18,7 +21,6 @@ const Home = () => {
   const [movieData, setMovieData] = useState([]);
   const [seriesData, setSeriesData] = useState([]);
   const dispatch = useDispatch();
-
   const { movieGenres, seriesGenres, status } = useSelector(
     (state) => state.genreData
   );
@@ -39,43 +41,54 @@ const Home = () => {
         setMovieData(data[0].results.map((el) => createMovieObject(el)));
         setSeriesData(data[1].results.map((el) => createMovieObject(el)));
         dispatch(fetchGenreData());
-        console.log(movieData, seriesData);
-        console.log('fetched');
-        // setGenreMovieData(data[2].genres);
-        // setGenreSeriesData(data[3].genres);
       } catch (error) {}
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    dispatch(fetchTvShows(1));
+  }, []);
+
+  console.log(movieData);
+
   return (
     <Theme>
-      <HomeWrapper>
-        <HomeHero
-          title={`Don't stress out about what to watch.`}
-          // title={'Every movie you could think of, in one place.'}
-          subtitle={`You know those nights when you waste hours looking for the right
+      <Routes>
+        <Route
+          index
+          element={
+            <HomeWrapper>
+              <HomeHero
+                title={`Don't stress out about what to watch.`}
+                // title={'Every movie you could think of, in one place.'}
+                subtitle={`You know those nights when you waste hours looking for the right
               movie to watch or the TV series to start? WTM solves the problem.`}>
-          <CarouselWrapper>
-            {status === 'loading' && <Spinner />}
-            {status === 'idle' && (
-              <>
-                <CategoryCarousel
-                  title={'Trending Movies'}
-                  category={movieData}
-                  genresArr={movieGenres.genres}
-                  type='movie'
-                />
-                <CategoryCarousel
-                  title={'Trending Series'}
-                  category={seriesData}
-                  genresArr={seriesGenres.genres}
-                  type='tv'
-                />
-              </>
-            )}
-          </CarouselWrapper>
-        </HomeHero>
-      </HomeWrapper>
+                <CarouselWrapper>
+                  {status === 'loading' && <Spinner />}
+                  {status === 'idle' && (
+                    <>
+                      <CategoryCarousel
+                        title={'Trending Movies'}
+                        category={movieData}
+                        genresArr={movieGenres.genres}
+                        type='movie'
+                      />
+                      <CategoryCarousel
+                        title={'Trending Series'}
+                        category={seriesData}
+                        genresArr={seriesGenres.genres}
+                        type='tv'
+                      />
+                    </>
+                  )}
+                </CarouselWrapper>
+              </HomeHero>
+            </HomeWrapper>
+          }
+        />
+        <Route path=':type' element={<MovieList />} />
+      </Routes>
     </Theme>
   );
 };

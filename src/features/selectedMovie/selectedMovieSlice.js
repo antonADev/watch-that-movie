@@ -15,11 +15,11 @@ export const fetchSelectedMovie = createAsyncThunk(
   'selectedMovieData/fetchSelectedMovie',
   async (myData, { rejectWithValue, getState }) => {
     try {
-      // const { type, movieId } = myData;
-      const state = getState();
-      console.log(state.selectedMovieData);
+      const { type, id } = myData;
+      // const state = getState();
+      // console.log(state.selectedMovieData);
       const data = await fetch(
-        `https://api.themoviedb.org/3/${state.selectedMovieData.type}/${state.selectedMovieData.id}?api_key=${API_KEY}&language=${navigator.language}&append_to_response=videos,credits`
+        `https://api.themoviedb.org/3/${type}/${id}?api_key=${API_KEY}&language=${navigator.language}&append_to_response=videos,credits`
       );
 
       const res = await data.json();
@@ -46,7 +46,6 @@ const selectedMovieSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchSelectedMovie.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.status = 'idle';
         state.data = action.payload;
       })

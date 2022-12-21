@@ -1,4 +1,10 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+export const DetailLink = styled(Link)`
+  min-width: 100%;
+  text-decoration: none;
+`;
 
 export const ImageWrapper = styled.div`
   position: relative;

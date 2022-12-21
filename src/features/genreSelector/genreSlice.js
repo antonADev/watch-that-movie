@@ -33,11 +33,7 @@ export const fetchGenreData = createAsyncThunk(
 const genreSlice = createSlice({
   name: 'genreData',
   initialState,
-  reducers: {
-    setGenreBasedOnShow: (state, action) => {
-      state.type = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchGenreData.pending, (state) => {
@@ -55,7 +51,5 @@ const genreSlice = createSlice({
       });
   },
 });
-
-export const { setGenreBasedOnShow } = genreSlice.actions;
 
 export default genreSlice.reducer;

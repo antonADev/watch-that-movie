@@ -17,6 +17,7 @@ import {
   IconWrapper,
 } from './navigation.styles';
 import Theme from '../../Theme';
+import Footer from '../../components/footer/footer.component';
 
 const Navigation = () => {
   const ref = useRef();
@@ -39,7 +40,10 @@ const Navigation = () => {
                 <NavLink to='/'>Home</NavLink>
               </ListItem>
               <ListItem>
-                <NavLink to='/random'>Random</NavLink>
+                <NavLink to='/movie'>Movies</NavLink>
+              </ListItem>
+              <ListItem>
+                <NavLink to='/tv'>Tv Shows</NavLink>
               </ListItem>
               <ListItem>
                 <NavLink to='/choose'>Choose</NavLink>

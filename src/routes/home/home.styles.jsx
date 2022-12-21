@@ -6,7 +6,7 @@ ${props.theme.keyframes.comeIn}
 
 export const HomeWrapper = styled.div`
   position: relative;
-  width: 100vw;
+  width: 100%;
   animation: ${comeIn} 1s;
 `;
 
@@ -17,7 +17,7 @@ export const CarouselWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 3rem;
-
+  margin: 2rem 0;
   @media ${(props) => props.theme.deviceMin.laptop} {
     gap: 5rem;
   }
