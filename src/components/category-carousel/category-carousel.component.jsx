@@ -23,6 +23,7 @@ import {
 
 import { DESKTOP_IMAGE_PATH, MOBILE_IMAGE_PATH } from '../../constants/global';
 
+import Theme from '../../Theme';
 import noImage from '../../assets/no-img.png';
 
 const CategoryCarousel = ({ title, category, genresArr, type }) => {
@@ -44,63 +45,65 @@ const CategoryCarousel = ({ title, category, genresArr, type }) => {
   });
 
   return (
-    <CategoryWrapper>
-      <Link to={type}>
-        <CategoryTitle>{title}</CategoryTitle>
-      </Link>
-      <CarouselWrapper>
-        <PreviousButton
-          onClick={() => {
-            handleClick(activeIndex - 1);
-          }}>
-          <FaArrowLeft />
-        </PreviousButton>
+    <Theme>
+      <CategoryWrapper>
+        <Link to={type}>
+          <CategoryTitle>{title}</CategoryTitle>
+        </Link>
+        <CarouselWrapper>
+          <PreviousButton
+            onClick={() => {
+              handleClick(activeIndex - 1);
+            }}>
+            <FaArrowLeft />
+          </PreviousButton>
 
-        <CategoryDataWrapper {...handlers} activeIndex={activeIndex}>
-          {category?.map((el) => {
-            return (
-              <CategoryItem
-                id={el.id}
-                type={type}
-                key={el.id}
-                onClick={() => {
-                  dispatch(setId(el.id));
-                  dispatch(setType(type));
-                  dispatch(fetchSelectedMovie());
-                  // return navigate('/random/:id', {
-                  //   state: {
-                  //     id: el.id,
-                  //   },
-                  // });
-                }}
-                title={el.title}
-                year={el.release}
-                backdrop={
-                  !el.backdrop && !el.poster
-                    ? `${noImage}`
-                    : `${
-                        window.innerWidth > 768
-                          ? DESKTOP_IMAGE_PATH
-                          : MOBILE_IMAGE_PATH
-                      }${el.backdrop ? el.backdrop : el.poster}`
-                }
-                genres={el.genres?.map((genre) => {
-                  const match = genresArr.find((el) => el.id === genre);
-                  return match;
-                })}
-              />
-            );
-          })}
-        </CategoryDataWrapper>
+          <CategoryDataWrapper {...handlers} activeIndex={activeIndex}>
+            {category?.map((el) => {
+              return (
+                <CategoryItem
+                  id={el.id}
+                  type={type}
+                  key={el.id}
+                  onClick={() => {
+                    dispatch(setId(el.id));
+                    dispatch(setType(type));
+                    dispatch(fetchSelectedMovie());
+                    // return navigate('/random/:id', {
+                    //   state: {
+                    //     id: el.id,
+                    //   },
+                    // });
+                  }}
+                  title={el.title}
+                  year={el.release}
+                  backdrop={
+                    !el.backdrop && !el.poster
+                      ? `${noImage}`
+                      : `${
+                          window.innerWidth > 768
+                            ? DESKTOP_IMAGE_PATH
+                            : MOBILE_IMAGE_PATH
+                        }${el.backdrop ? el.backdrop : el.poster}`
+                  }
+                  genres={el.genres?.map((genre) => {
+                    const match = genresArr.find((el) => el.id === genre);
+                    return match;
+                  })}
+                />
+              );
+            })}
+          </CategoryDataWrapper>
 
-        <NextButton
-          onClick={() => {
-            handleClick(activeIndex + 1);
-          }}>
-          <FaArrowRight />
-        </NextButton>
-      </CarouselWrapper>
-    </CategoryWrapper>
+          <NextButton
+            onClick={() => {
+              handleClick(activeIndex + 1);
+            }}>
+            <FaArrowRight />
+          </NextButton>
+        </CarouselWrapper>
+      </CategoryWrapper>
+    </Theme>
   );
 };
 

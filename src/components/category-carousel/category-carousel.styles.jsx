@@ -13,7 +13,6 @@ export const CategoryWrapper = styled.div`
 
 export const DetailLink = styled(Link)`
   display: flex;
-  border-radius: 30px;
   width: fit-content;
 `;
 
@@ -28,7 +27,7 @@ export const CarouselWrapper = styled.div`
   position: relative;
   min-width: 100%;
   width: 100%;
-  border-radius: 30px;
+
   /* display: flex;
   justify-content: center;
   align-items: center; */
@@ -37,6 +36,8 @@ export const CarouselWrapper = styled.div`
 export const CategoryDataWrapper = styled.div`
   display: flex;
   border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
   width: 100%;
   transform: translateX(-${(props) => props.activeIndex * 100}%);
 
@@ -46,7 +47,7 @@ export const CategoryDataWrapper = styled.div`
 
 export const NextButton = styled.button`
   background: none;
-  color: white;
+  color: ${(props) => props.theme.colors.white};
   border: none;
   font-size: 1.5rem;
   z-index: 1;

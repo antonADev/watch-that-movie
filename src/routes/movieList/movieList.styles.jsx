@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MovieListWrapper = styled.div`
   position: relative;
-  width: 100%;
+  overflow: hidden;
 `;
 
 export const MovieItemWrapper = styled.div`
@@ -17,4 +17,5 @@ export const MovieItemWrapper = styled.div`
 export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
+  margin: 2rem 0 3rem;
 `;

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import HomeHero from '../../components/home-hero/home-hero.component';
@@ -21,10 +20,6 @@ const MovieList = ({
   handler,
   loadMoreStatus,
 }) => {
-  // const { tvShows, status, message } = useSelector(
-  //   (state) => state.tvShowsData
-  // );
-
   return (
     <MovieListWrapper>
       <HomeHero title={`Popular ${title}`}>

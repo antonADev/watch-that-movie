@@ -1,13 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-const popIn = keyframes`
-0% {
-  transform: translate(0, 100px);
-}
-
-100% {
-  transform: translate(0, 0);
-}
-`;
 
 export const ChoiceSelectionWrapper = styled.div`
   padding: 2rem 0;
@@ -22,10 +13,6 @@ export const ChoiceSelectionWrapper = styled.div`
   border-radius: 15px;
   margin: 1rem;
   box-shadow: 0 8px 20px 0 ${(props) => props.theme.colors.veryLight};
-  /* transform: none;
-  :not(:first-child) {
-    animation: ${popIn} 0.5s;
-  } */
 `;
 
 export const ChoiceSelectionHeader = styled.h2`

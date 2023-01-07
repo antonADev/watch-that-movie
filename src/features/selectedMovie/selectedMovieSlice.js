@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { createMovieObject } from '../../utils/helperFunctions';
+import { fetchMovieDetails } from './selectedMovieApi';
 
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const initialState = {
@@ -13,19 +14,23 @@ const initialState = {
 
 export const fetchSelectedMovie = createAsyncThunk(
   'selectedMovieData/fetchSelectedMovie',
-  async (myData, { rejectWithValue, getState }) => {
+  async (myData, { rejectWithValue }) => {
     try {
       const { type, id } = myData;
       // const state = getState();
       // console.log(state.selectedMovieData);
-      const data = await fetch(
-        `https://api.themoviedb.org/3/${type}/${id}?api_key=${API_KEY}&language=${navigator.language}&append_to_response=videos,credits`
-      );
+      // const data = await fetch(
+      //   `https://api.themoviedb.org/3/${type}/${id}?api_key=${API_KEY}&language=${navigator.language}&append_to_response=videos,credits`
+      // );
 
-      const res = await data.json();
+      const res = await fetchMovieDetails(type, id);
       console.log(res);
       return createMovieObject(res);
-    } catch (error) {}
+    } catch (error) {
+      return rejectWithValue(
+        `An error occurred. It wasn't possibile to retrieve the requested data`
+      );
+    }
   }
 );
 

@@ -4,7 +4,7 @@ export const MovieCardWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  color: #8c7aa2;
+  color: ${(props) => props.theme.colors.main};
 `;
 
 export const MovieHeroWrapper = styled.div`
@@ -29,8 +29,8 @@ export const ProfileCarousel = styled.div`
   height: auto;
   width: 100%;
   display: flex;
-
   overflow-x: scroll;
+
   & > * {
     margin: 1rem 0.5rem 1rem 1rem;
   }
@@ -38,4 +38,10 @@ export const ProfileCarousel = styled.div`
   & > :first-child {
     margin: 1rem 0.5rem 1rem 0;
   }
+`;
+
+export const CastWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;

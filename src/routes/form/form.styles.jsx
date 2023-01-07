@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 export const FormWrapper = styled.div`
   position: relative;
-  width: 100vw;
   margin-bottom: 2rem;
 `;
 

@@ -8,10 +8,12 @@ export const DetailLink = styled(Link)`
 
 export const ImageWrapper = styled.div`
   position: relative;
+  max-height: 400px;
   height: 30vmax;
   min-width: 100%;
 
   border-radius: 30px;
+
   overflow: hidden;
   display: flex;
   justify-content: flex-end;
@@ -23,14 +25,19 @@ export const ImageWrapper = styled.div`
     background-size: cover;
     position: absolute;
     top: 0;
-
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
     height: 100%;
     width: 100%;
     z-index: -1;
     transition: all 1s;
   }
-  &:hover::after {
-    transform: scale(1.05);
+
+  @media (hover: hover) {
+    &:hover::after {
+      transform: scale(1.05);
+    }
   }
 `;
 

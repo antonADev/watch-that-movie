@@ -1,18 +1,14 @@
 import styled from 'styled-components';
 export const ImageWrapper = styled.div`
   position: relative;
-  height: 30vh;
+  height: 20vmax;
+  min-height: 300px;
   max-height: 600px;
-  width: 100%;
   border-radius: 0 0 30px 30px;
   overflow: hidden;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  @media ${(props) =>
-      props.theme.deviceMin.tablet} and (orientation: landscape) {
-    height: 30vw;
-  }
 
   ::after {
     content: '';
@@ -26,9 +22,20 @@ export const ImageWrapper = styled.div`
     z-index: -1;
     transition: all 1s;
   }
-  &:hover::after {
-    transform: scale(1.05);
+
+  @media (hover: hover) {
+    &:hover::after {
+      transform: scale(1.05);
+    }
   }
+  @media ${(props) => props.theme.deviceMin.tablet} and (orientation: landscape) {
+    min-height: 350px;
+    height: 30vmax;
+  }
+  /* @media ${(props) => props.theme.deviceMin.tablet} {
+    min-height: 300px;
+    height: 30vmax;
+  } */
 `;
 
 export const TrailerContainer = styled.div`
@@ -42,11 +49,7 @@ export const TrailerContainer = styled.div`
 export const InfoWrapper = styled.div`
   height: 100%;
   width: 100%;
-  background: linear-gradient(
-    hsl(0 0% 0% / 0),
-    hsl(20 0% 0% / 0.3) 20%,
-    hsl(0 0% 0% / 1)
-  );
+  background: linear-gradient(hsl(0 0% 0% / 0), hsl(20 0% 0% / 0.3) 20%, hsl(0 0% 0% / 1));
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -82,7 +85,6 @@ export const PlayButton = styled.button`
   display: flex;
   align-items: flex-end;
   color: ${(props) => props.theme.colors.white};
-
   font-size: 3.5rem;
 `;
 

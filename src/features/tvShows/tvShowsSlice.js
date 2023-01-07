@@ -3,9 +3,9 @@ import { createMovieObject } from '../../utils/helperFunctions';
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const initialState = {
   tvShows: [],
-  status: '',
+  tvShowsStatus: '',
   loadMoreStatus: '',
-  message: '',
+  tvShowsMessage: '',
 };
 
 export const fetchTvShows = createAsyncThunk(
@@ -46,15 +46,15 @@ const tvShowsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTvShows.pending, (state) => {
-        state.status = 'loading';
+        state.tvShowsStatus = 'loading';
       })
       .addCase(fetchTvShows.fulfilled, (state, action) => {
-        state.status = 'idle';
+        state.tvShowsStatus = 'idle';
         state.tvShows = action.payload;
       })
       .addCase(fetchTvShows.rejected, (state, action) => {
-        state.status = 'error';
-        state.message = action.payload;
+        state.tvShowsStatus = 'error';
+        state.tvShowsMessage = action.payload;
       })
       .addCase(fetchMoreTvShows.pending, (state) => {
         state.loadMoreStatus = 'loading';
@@ -66,7 +66,7 @@ const tvShowsSlice = createSlice({
       .addCase(fetchMoreTvShows.rejected, (state, action) => {
         console.log(action);
         state.loadMoreStatus = 'error';
-        state.message = action.payload;
+        state.tvShowsMessage = action.payload;
       });
   },
 });

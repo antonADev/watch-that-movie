@@ -6,19 +6,28 @@ export const PeopleCarouselCard = styled.div`
   /* margin: 1rem; */
   /* min-height: 150px; */
   height: max-content;
-  width: 70px;
+  aspect-ratio: 2/3;
+  max-width: 150px;
+  min-width: 150px;
+  width: 30vmin;
+  height: 35vmax;
+  min-height: 300px;
+  max-height: 300px;
   border-radius: 25px;
+  -webkit-box-shadow: 0px 0px 37px 8px rgba(189, 189, 189, 1);
+  -moz-box-shadow: 0px 0px 37px 8px rgba(189, 189, 189, 1);
+  box-shadow: 0px 0px 10px 2px rgba(189, 189, 189, 0.5);
 `;
 
 export const ImageContainer = styled.div`
-  max-height: 50%;
-  height: 75px;
+  height: 70%;
+
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   border-radius: 15px;
-
+  object-fit: fill;
   img {
     display: block;
     margin: auto;
@@ -29,13 +38,20 @@ export const ImageContainer = styled.div`
 `;
 
 export const InfoContainer = styled.div`
+  padding: 0.5rem;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  word-wrap: break-word;
   h3 {
-    font-size: 0.8rem;
+    font-size: clamp(0.8rem, -0.875rem + 4.333vw, 1);
     color: ${(props) => props.theme.colors.main};
   }
 
   p {
-    font-size: 0.7rem;
+    font-size: clamp(0.7rem, -0.875rem + 4.333vw, 0.8rem);
     color: #${(props) => props.theme.colors.lightGrey};
   }
 `;

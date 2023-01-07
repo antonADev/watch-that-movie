@@ -12,31 +12,6 @@ import {
 import MovieDetail from '../movieDetail/movieDetail.component';
 import MovieList from '../movieList/movieList.component';
 
-// const TvShows = () => {
-//   const dispatch = useDispatch();
-//   const [page, setPage] = useState(1);
-
-//   useEffect(() => {
-//     dispatch(fetchTvShows(page));
-//   }, [page]);
-
-//   const { tvShows, status, message } = useSelector(
-//     (state) => state.tvShowsData
-//   );
-
-//   return (
-//     <Routes>
-//       <Route
-//         index
-//         element={<MovieList data={tvShows} status={status} message={message} />}
-//       />
-//       <Route path={':id'} element={<MovieDetail type={'tv'} />} />
-//     </Routes>
-//   );
-// };
-
-// export default TvShows;
-
 const Movies = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(2);
@@ -50,7 +25,7 @@ const Movies = () => {
     setPage((page) => page + 1);
   };
 
-  const { movies, status, loadMoreStatus, message } = useSelector(
+  const { movies, movieStatus, loadMoreStatus, movieMessage } = useSelector(
     (state) => state.moviesData
   );
 
@@ -61,9 +36,9 @@ const Movies = () => {
         element={
           <MovieList
             data={movies}
-            status={status}
+            status={movieStatus}
             loadMoreStatus={loadMoreStatus}
-            message={message}
+            message={movieMessage}
             title={'Movies'}
             handler={handleLoadMore}
           />

@@ -3,9 +3,9 @@ import { createMovieObject } from '../../utils/helperFunctions';
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const initialState = {
   movies: {},
-  status: '',
+  movieStatus: '',
   loadMoreStatus: '',
-  message: '',
+  movieMessage: '',
 };
 
 export const fetchMovies = createAsyncThunk(
@@ -46,15 +46,15 @@ const moviesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchMovies.pending, (state) => {
-        state.status = 'loading';
+        state.movieStatus = 'loading';
       })
       .addCase(fetchMovies.fulfilled, (state, action) => {
-        state.status = 'idle';
+        state.movieStatus = 'idle';
         state.movies = action.payload;
       })
       .addCase(fetchMovies.rejected, (state, action) => {
-        state.status = 'error';
-        state.message = action.payload;
+        state.movieStatus = 'error';
+        state.movieMessage = action.payload;
       })
       .addCase(fetchMoreMovies.pending, (state) => {
         state.loadMoreStatus = 'loading';
@@ -65,7 +65,7 @@ const moviesSlice = createSlice({
       })
       .addCase(fetchMoreMovies.rejected, (state, action) => {
         state.loadMoreStatus = 'error';
-        state.message = action.payload;
+        state.movieMessage = action.payload;
       });
     // .addCase(fetchMovieCredits.pending, (state) => {
     //   state.status = 'loading';

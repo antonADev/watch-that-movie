@@ -1,16 +1,18 @@
 import React from 'react';
 import { MOBILE_IMAGE_PATH } from '../../constants/global';
+import Theme from '../../Theme';
 
 import { PosterWrapper } from './poster.styles';
 
-
-const Poster = ({poster}) => {
+const Poster = ({ poster }) => {
   return (
-    <>
-      <PosterWrapper>
-        <img src={`${MOBILE_IMAGE_PATH}${poster}`} alt='movie-poster' />
-      </PosterWrapper>
-    </>
+    <Theme>
+      <>
+        <PosterWrapper>
+          <img src={`${MOBILE_IMAGE_PATH}${poster}`} alt='movie-poster' />
+        </PosterWrapper>
+      </>
+    </Theme>
   );
 };
 

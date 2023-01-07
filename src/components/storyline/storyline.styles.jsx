@@ -15,10 +15,10 @@ export const StorylineHeaderWrapper = styled.div`
 
 export const StorylineHeader = styled.h3`
   font-weight: 600;
-  font-size: clamp(1.1rem, -0.875rem + 4.333vw, 1.6rem);
+  font-size: clamp(1.3rem, -0.875rem + 4.333vw, 1.6rem);
 `;
 
 export const StorylinePara = styled.div`
-  font-size: clamp(0.8rem, -0.875rem + 4.333vw, 1.1rem);
+  font-size: clamp(1rem, -0.875rem + 4.333vw, 1.1rem);
   color: ${(props) => props.theme.colors.lightGrey};
 `;

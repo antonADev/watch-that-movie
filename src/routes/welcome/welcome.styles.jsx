@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 const expand = keyframes`
 0%{
-  background-color: #8f44fd;
+  background-color: #4947a8;
     width: 0;
     height: 0;
     border-radius: 50%;
@@ -15,7 +15,7 @@ const expand = keyframes`
     width: 100%;
     height: 100%;
     border-radius: 0;
-    background-color: #8f44fd;
+    background-color: #4947a8;
     opacity: 0;
     /* transform: scale(2) */
   }
@@ -43,7 +43,7 @@ const appear = keyframes`
 const changeColor = keyframes`
 
 100% {
-  color: #ffffff;
+  color:  #ffffff;
 }
 
 `;
@@ -72,7 +72,7 @@ export const Header = styled.h1`
   font-family: 'Passion One', cursive;
   text-transform: uppercase;
   font-size: 5rem;
-  color: #8f44fd;
+  color: ${(props) => props.theme.colors.main};
   text-align: center;
   display: flex;
   flex-direction: column;

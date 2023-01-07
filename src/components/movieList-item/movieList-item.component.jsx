@@ -1,8 +1,9 @@
-import React from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 import { MOBILE_IMAGE_PATH, DESKTOP_IMAGE_PATH } from '../../constants/global';
 import Theme from '../../Theme';
+import { useIntersectionObserver } from '../../utils/hooks';
 
 import {
   MovieListItemWrapper,
@@ -11,11 +12,33 @@ import {
 } from './movieList-item.styles';
 
 const MovieListItem = ({ poster, title, release, id }) => {
+  // const [isVisible, setIsVisible] = useState(false);
+
+  // const observer = useRef();
+  // const lastProviderElementRef = useCallback((node) => {
+  //   if (observer.current) observer.current.disconnect();
+  //   observer.current = new IntersectionObserver((entries) => {
+  //     entries.forEach((el) => {
+  //       if (el.isIntersecting) {
+  //         setIsVisible(true);
+  //         console.log(el.intersectionRatio);
+  //         observer.current.disconnect();
+  //       } else {
+  //         return;
+  //       }
+  //     });
+  //   });
+  //   if (node) observer.current.observe(node);
+  // }, []);
+  const ref = useRef();
+  const isVisible = useIntersectionObserver(ref, { treshold: 0.5 });
   return (
     <>
       <Theme>
         <Link to={`${id}`}>
-          <MovieListItemWrapper>
+          <MovieListItemWrapper
+            ref={ref}
+            isVisible={isVisible ? 'visible' : 'hidden'}>
             <ImageWrapper background={`${MOBILE_IMAGE_PATH}${poster}`}>
               {/* <img src={`${MOBILE_IMAGE_PATH}${poster}`} alt='' /> */}
             </ImageWrapper>

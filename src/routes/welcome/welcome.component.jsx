@@ -13,6 +13,7 @@ import {
   Header,
   DotContainer,
 } from './welcome.styles';
+import Theme from '../../Theme';
 
 const Welcome = () => {
   // const navigate = useNavigate();
@@ -31,20 +32,22 @@ const Welcome = () => {
     return () => clearTimeout(timeoutId);
   }, [isLoaded]);
   return (
-    <WelcomeWrapper>
-      {/* <Paragraph>
+    <Theme>
+      <WelcomeWrapper>
+        {/* <Paragraph>
         <Span aria-hidden={true}>Watch That Movie</Span>Watch That Movie
         <Span aria-hidden={true}>Watch That Movie</Span>
       </Paragraph> */}
-      <AnimationDiv>
-        <Header>
-          <Span>Watch</Span>
-          <Span>That</Span>
-          <Span>Movie</Span>
-        </Header>
-        <DotContainer></DotContainer>
-      </AnimationDiv>
-    </WelcomeWrapper>
+        <AnimationDiv>
+          <Header>
+            <Span>Watch</Span>
+            <Span>That</Span>
+            <Span>Movie</Span>
+          </Header>
+          <DotContainer></DotContainer>
+        </AnimationDiv>
+      </WelcomeWrapper>
+    </Theme>
   );
 };
 

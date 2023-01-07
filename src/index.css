@@ -24,10 +24,11 @@ a {
 }
 
 body {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   max-width: 2000px;
 
   margin: 0 auto;
+
   text-align: center;
   /* background: linear-gradient(#000000, #2c3e50) no-repeat center; */
   background-color: #ffffff;
@@ -37,6 +38,5 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

@@ -1,36 +1,6 @@
 import styled from 'styled-components';
 
 export const MovieListItemWrapper = styled.div`
-  /* background: url(${(props) => props.background}) no-repeat center; */
-  /* background-size: cover; */
-  /* aspect-ratio: 5/7; */
-
-  /* max-width: 180px;
-  max-height: 350px;
-  min-width: 120px;
-  min-height: 180px;
-  width: 30vmin;
-  height: 35vmax;
-  aspect-ratio: 2/3;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 1px;
-  border-radius: 25px;
-  -webkit-box-shadow: 0px 0px 37px 8px rgba(189, 189, 189, 1);
-  -moz-box-shadow: 0px 0px 37px 8px rgba(189, 189, 189, 1);
-  box-shadow: 0px 0px 37px 8px rgba(189, 189, 189, 1);
-  height: fit-content;
-  width: fit-content;
-  @media ${(props) => props.theme.deviceMin.tablet} {
-    flex-direction: row;
-    justify-content: flex-start;
-
-    max-width: 50vw;
-    width: 50vw;
-    border-radius: 25px;
-    max-height: 250px;
-  } */
-
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -42,6 +12,12 @@ export const MovieListItemWrapper = styled.div`
   -webkit-box-shadow: 0px 0px 37px 8px rgba(189, 189, 189, 1);
   -moz-box-shadow: 0px 0px 37px 8px rgba(189, 189, 189, 1);
   box-shadow: 0px 0px 37px 8px rgba(189, 189, 189, 1);
+
+  opacity: ${(props) => (props.isVisible === 'hidden' ? 0 : 1)};
+  transform: ${(props) =>
+    props.isVisible === 'hidden' ? 'translate(100px, 0px)' : ''};
+  transition: all 0.5s;
+
   @media ${(props) => props.theme.deviceMin.tablet} {
     width: 40vw;
     max-width: 500px;

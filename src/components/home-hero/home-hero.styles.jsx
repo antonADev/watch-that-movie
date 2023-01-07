@@ -3,8 +3,7 @@ import styled from 'styled-components';
 export const HomeHeroWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
+  justify-content: flex-start;
   height: 100%;
 `;
 
@@ -17,9 +16,9 @@ export const ImageWrapper = styled.div`
   font-family: ${(props) => props.theme.fonts[2]};
   position: relative;
   background-color: ${(props) => props.theme.colors.main};
-  height: 30vh;
+  min-height: 300px;
+  height: 20vmax;
   max-height: 600px;
-  width: 100%;
 
   border-radius: 0 0 30px 30px;
   z-index: -1;
@@ -37,6 +36,10 @@ export const ImageWrapper = styled.div`
     /* transition: all 1s; */
   }
 
+  @media ${(props) => props.theme.deviceMin.tablet} and (orientation: landscape) {
+    min-height: 350px;
+    height: 30vmax;
+  }
   /* @media ${(props) => props.theme.deviceMin.laptop} {
     height: 20vmax;
   } */

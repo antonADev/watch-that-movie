@@ -15,6 +15,7 @@ const theme = {
     lightGrey: '#7e7e7e',
     grey: '#334549',
     white: 'hsl(0, 0%, 100%)',
+    coral: '#FF7F50',
     veryLight: 'hsl(263, 100%, 93%)',
     light: '#615eb9',
     main: '#4947a8',
