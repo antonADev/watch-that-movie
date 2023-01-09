@@ -18,7 +18,7 @@ export const ImageWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-
+  scroll-snap-align: start;
   ::after {
     content: '';
     background: url(${(props) => props.background}) no-repeat top;
@@ -52,11 +52,7 @@ export const TextWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  background: linear-gradient(
-    hsl(0 0% 0% / 0),
-    hsl(20 0% 0% / 0.3) 20%,
-    hsl(0 0% 0% / 1)
-  );
+  background: linear-gradient(hsl(0 0% 0% / 0), hsl(20 0% 0% / 0.3) 20%, hsl(0 0% 0% / 1));
   h1 {
     margin: 0;
     font-size: clamp(1.5rem, -0.875rem + 6.333vw, 1.8rem);

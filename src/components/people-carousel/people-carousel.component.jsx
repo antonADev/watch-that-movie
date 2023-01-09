@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef } from 'react';
 import Theme from '../../Theme';
 import {
   PeopleCarouselWrapper,
@@ -6,13 +6,15 @@ import {
   ImageContainer,
   InfoContainer,
 } from './people-carousel.styles';
-
+import { useIntersectionObserver } from '../../utils/hooks';
 const PeopleCarousel = ({ imagePath, name, character }) => {
+  const ref = useRef();
+  const isVisible = useIntersectionObserver(ref, { treshold: 1.0 });
   return (
     <Theme>
       <PeopleCarouselCard>
-        <ImageContainer>
-          <img src={`${imagePath}`} alt={`${name}`} />
+        <ImageContainer ref={ref}>
+          <img src={isVisible ? `${imagePath}` : null} alt={`${name}`} />
         </ImageContainer>
         <InfoContainer>
           <h3>{name}</h3>

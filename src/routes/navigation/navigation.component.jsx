@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, Suspense, useRef } from 'react';
 import { useOnClickOutside } from '../../utils/hooks';
 
 import { Outlet } from 'react-router-dom';
@@ -57,7 +57,9 @@ const Navigation = () => {
             {!isOpen ? <MenuIcon /> : <Close />}
           </IconWrapper>
         </Nav>
-        <Outlet />
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </Theme>
     </>
   );

@@ -2,16 +2,23 @@ import Welcome from './routes/welcome/welcome.component';
 import { useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Form from './routes/form/form.component';
-import Home from './routes/home/home.component';
+// import Form from './routes/form/form.component';
+// import Home from './routes/home/home.component';
 import Navigation from './routes/navigation/navigation.component';
 
-import TvShows from './routes/tvShows/tvShows.component';
-import Movies from './routes/movies/movies.component';
+// import TvShows from './routes/tvShows/tvShows.component';
+// import Movies from './routes/movies/movies.component';
 import Footer from './components/footer/footer.component';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect, lazy } from 'react';
+
 import './App.css';
+
+const Home = lazy(() => import('./routes/home/home.component'));
+const Form = lazy(() => import('./routes/form/form.component'));
+const Movies = lazy(() => import('./routes/movies/movies.component'));
+const TvShows = lazy(() => import('./routes/tvShows/tvShows.component'));
+// const Footer = lazy(() => import('./components/footer/footer.component'));
+
 function App() {
   const location = useLocation();
 

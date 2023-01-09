@@ -1,6 +1,6 @@
-import React from 'react';
+import { useRef } from 'react';
 import Theme from '../../Theme';
-import { Link } from 'react-router-dom';
+import { useIntersectionObserver } from '../../utils/hooks';
 import {
   ImageWrapper,
   DetailLink,
@@ -9,11 +9,25 @@ import {
   GenrePara,
 } from './category-item.styles';
 
+import { DESKTOP_IMAGE_PATH, MOBILE_IMAGE_PATH } from '../../constants/global';
+
 const CategoryItem = ({ title, year, backdrop, genres, onClick, id, type }) => {
+  const ref = useRef();
+  const isVisible = useIntersectionObserver(ref, { treshold: 1.0 });
+
   return (
     <Theme>
       <DetailLink to={`${type}/${id}`}>
-        <ImageWrapper onClick={onClick} background={backdrop}>
+        <ImageWrapper
+          ref={ref}
+          onClick={onClick}
+          background={
+            isVisible
+              ? window.innerWidth > 768
+                ? `${DESKTOP_IMAGE_PATH}${backdrop}`
+                : `${MOBILE_IMAGE_PATH}${backdrop}`
+              : null
+          }>
           <TextWrapper>
             <h1>
               {title}
