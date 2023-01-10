@@ -6,6 +6,10 @@ export const FormWrapper = styled.div`
   margin-bottom: 2rem;
 `;
 
+export const FormHeader = styled.h1`
+  margin: 3rem 0;
+`;
+
 export const DetailLink = styled(Link)`
   text-decoration: none;
 `;

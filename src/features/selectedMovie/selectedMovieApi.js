@@ -5,5 +5,8 @@ const lang = navigator.language;
 export const fetchMovieDetails = (type, id) => {
   return fetch(
     `${baseURL}${type}/${id}?api_key=${API_KEY}&language=${lang}&append_to_response=videos,credits`
-  ).then((res) => res.json());
+  ).then((res) => {
+    if (!res.ok) throw new Error(`${res.statusText}`);
+    return res.json();
+  });
 };

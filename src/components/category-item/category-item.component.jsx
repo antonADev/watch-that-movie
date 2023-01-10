@@ -13,7 +13,7 @@ import { DESKTOP_IMAGE_PATH, MOBILE_IMAGE_PATH } from '../../constants/global';
 
 const CategoryItem = ({ title, year, backdrop, genres, onClick, id, type }) => {
   const ref = useRef();
-  const isVisible = useIntersectionObserver(ref, { treshold: 1.0 });
+  const isVisible = useIntersectionObserver(ref, { treshold: 1 });
 
   return (
     <Theme>
@@ -26,7 +26,7 @@ const CategoryItem = ({ title, year, backdrop, genres, onClick, id, type }) => {
               ? window.innerWidth > 768
                 ? `${DESKTOP_IMAGE_PATH}${backdrop}`
                 : `${MOBILE_IMAGE_PATH}${backdrop}`
-              : null
+              : backdrop
           }>
           <TextWrapper>
             <h1>

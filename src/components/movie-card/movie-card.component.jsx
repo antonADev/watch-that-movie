@@ -19,53 +19,6 @@ import Theme from '../../Theme';
 
 const MovieCard = ({ status, movie, credits, message }) => {
   return (
-    // <MovieCardWrapper>
-    //   {status === 'loading' && <Spinner />}
-    //   {status === 'idle' && (
-    //     <>
-    //       <MovieHeroWrapper>
-    //         <MovieHero
-    //           title={movie.title}
-    //           genres={movie.genres}
-    //           //Year original format yyyy-dd-mm
-    //           year={movie.release}
-    //           backdrop={!movie.backdrop ? movie.poster : movie.backdrop}
-    //           video={
-    //             movie.trailer.results.filter(
-    //               (el) => el.type === 'Teaser' || el.type === 'Trailer'
-    //             )[0]
-    //           }
-    //         />
-    //       </MovieHeroWrapper>
-    //       <MovieDataWrapper>
-    //         <Details
-    //           vote={movie.voteAverage}
-    //           voteCount={movie.voteCount}
-    //           releaseDate={movie.release}
-    //           poster={movie.poster}
-    //           crew={movie.credits.crew}
-    //         />
-    //         <Storyline text={movie.overview} />
-    //         <ProfileCarousel>
-    //           {movie.credits.cast?.map((el) => (
-    //             <PeopleCarousel
-    //               key={el.id}
-    //               imagePath={
-    //                 el.profile_path !== null
-    //                   ? `https://image.tmdb.org/t/p/w185/${el.profile_path}`
-    //                   : `${noImage}`
-    //               }
-    //               name={el.name}
-    //               character={el.character}
-    //             />
-    //           ))}
-    //         </ProfileCarousel>
-    //       </MovieDataWrapper>
-    //     </>
-    //   )}
-    //   {status === 'error' && <h1>Error</h1>}
-    //   {/* {conditionalComponent()} */}
-    // </MovieCardWrapper>
     <Theme>
       <>
         {movie && (

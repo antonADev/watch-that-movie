@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { createMovieObject } from '../../utils/helperFunctions';
-const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+import { fetchInitialMovieList, fetchMoreMovieList } from './moviesApi';
 const initialState = {
   movies: {},
   movieStatus: '',
@@ -9,32 +9,26 @@ const initialState = {
 };
 
 export const fetchMovies = createAsyncThunk(
-  'tvShowsData/fetchMovies',
+  'moviesData/fetchMovies',
   async (_, { rejectWithValue }) => {
     try {
-      const data = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=${navigator.language}&page=1`
-      );
-      const res = await data.json();
+      const data = await fetchInitialMovieList();
 
-      return res.results.map((el) => createMovieObject(el));
+      return data.results.map((el) => createMovieObject(el));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(`${error}`);
     }
   }
 );
 export const fetchMoreMovies = createAsyncThunk(
-  'tvShowsData/fetchMoreMovies',
+  'moviesData/fetchMoreMovies',
   async (page, { rejectWithValue }) => {
     try {
-      const data = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=${navigator.language}&page=${page}`
-      );
-      const res = await data.json();
+      const data = await fetchMoreMovieList(page);
 
-      return res.results.map((el) => createMovieObject(el));
+      return data.results.map((el) => createMovieObject(el));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(`${error}`);
     }
   }
 );
@@ -67,18 +61,6 @@ const moviesSlice = createSlice({
         state.loadMoreStatus = 'error';
         state.movieMessage = action.payload;
       });
-    // .addCase(fetchMovieCredits.pending, (state) => {
-    //   state.status = 'loading';
-    // })
-    // .addCase(fetchMovieCredits.fulfilled, (state, action) => {
-    //   console.log(action.payload);
-    //   state.status = 'idle';
-    //   state.credits = action.payload;
-    // })
-    // .addCase(fetchMovieCredits.rejected, (state, action) => {
-    //   state.status = 'error';
-    //   state.message = action.payload;
-    // });
   },
 });
 

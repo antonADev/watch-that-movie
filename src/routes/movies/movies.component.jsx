@@ -1,17 +1,10 @@
-import React from 'react';
-
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, useParams, useLocation } from 'react-router-dom';
-import {
-  fetchMovies,
-  fetchMoreMovies,
-} from '../../features/movies/moviesSlice';
+import { fetchMovies, fetchMoreMovies } from '../../features/movies/moviesSlice';
 
-import MovieDetail from '../movieDetail/movieDetail.component';
-import MovieList from '../movieList/movieList.component';
-
+import MovieList from '../../components/movieList/movieList.component';
+const MovieDetail = lazy(() => import('../movieDetail/movieDetail.component'));
 const Movies = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(2);

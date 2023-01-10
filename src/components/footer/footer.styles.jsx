@@ -15,6 +15,9 @@ export const FooterWrapper = styled.footer`
   @media ${(props) => props.theme.deviceMin.tablet} {
     flex-direction: row;
     align-items: flex-start;
+
+    /* position: fixed;
+    bottom: 0; */
   }
   /* position: fixed;
   bottom: 0; */

@@ -1,12 +1,12 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
 import { fetchMoreTvShows, fetchTvShows } from '../../features/tvShows/tvShowsSlice';
-import MovieDetail from '../movieDetail/movieDetail.component';
-import MovieList from '../movieList/movieList.component';
+
+import MovieList from '../../components/movieList/movieList.component';
+
+const MovieDetail = lazy(() => import('../movieDetail/movieDetail.component'));
 
 const TvShows = () => {
   const dispatch = useDispatch();

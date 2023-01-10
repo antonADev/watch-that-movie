@@ -52,3 +52,7 @@ export const Title = styled.h1`
 export const Subtitle = styled.h2`
   font-size: clamp(1rem, -0.875rem + 4.333vw, 2rem);
 `;
+
+export const ChildrenContainer = styled.div`
+  height: fit-content;
+`;

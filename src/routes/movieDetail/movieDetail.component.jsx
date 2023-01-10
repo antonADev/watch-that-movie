@@ -5,7 +5,9 @@ import { fetchSelectedMovie } from '../../features/selectedMovie/selectedMovieSl
 
 import MovieCard from '../../components/movie-card/movie-card.component';
 import Spinner from '../../components/spinner/spinner.component';
+import Error from '../../components/error/error.component';
 
+import { MovieDetailWrapper } from './movieDetail.styles';
 const MovieDetail = ({ type }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -15,16 +17,14 @@ const MovieDetail = ({ type }) => {
     dispatch(fetchSelectedMovie({ type: type, id: id }));
   }, [type, id]);
 
-  const { data, message, status } = useSelector(
-    (state) => state.selectedMovieData
-  );
+  const { data, message, status } = useSelector((state) => state.selectedMovieData);
 
   return (
-    <>
+    <MovieDetailWrapper>
       {status === 'loading' && <Spinner />}
       {status === 'idle' && <MovieCard movie={data} />}
-      {status === 'error' && <h1>{message}</h1>}
-    </>
+      {status === 'error' && <Error message={message} />}
+    </MovieDetailWrapper>
   );
 };
 

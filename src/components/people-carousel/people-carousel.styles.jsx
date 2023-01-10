@@ -11,7 +11,7 @@ export const PeopleCarouselCard = styled.div`
   min-width: 150px;
   width: 30vmin;
   height: 35vmax;
-  min-height: 300px;
+  min-height: 350px;
   max-height: 300px;
   border-radius: 25px;
   -webkit-box-shadow: 0px 0px 37px 8px rgba(189, 189, 189, 1);
@@ -27,8 +27,8 @@ export const ImageContainer = styled.div`
   align-items: center;
   overflow: hidden;
   border-radius: 15px;
-  object-fit: fill;
   img {
+    object-fit: cover;
     display: block;
     margin: auto;
     min-width: 100%;
@@ -42,16 +42,16 @@ export const InfoContainer = styled.div`
   height: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   word-wrap: break-word;
   h3 {
-    font-size: clamp(0.8rem, -0.875rem + 4.333vw, 1);
+    font-size: clamp(0.8rem, -0.875rem + 4.333vw, 1rem);
     color: ${(props) => props.theme.colors.main};
   }
 
   p {
     font-size: clamp(0.7rem, -0.875rem + 4.333vw, 0.8rem);
-    color: #${(props) => props.theme.colors.lightGrey};
+    color: ${(props) => props.theme.colors.lightGrey};
   }
 `;

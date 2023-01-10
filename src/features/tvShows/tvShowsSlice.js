@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { createMovieObject } from '../../utils/helperFunctions';
-const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+import { fetchInitialTvShowList, fetchMoreTvShowList } from './tvShowsApi';
+
 const initialState = {
   tvShows: [],
   tvShowsStatus: '',
@@ -12,14 +13,11 @@ export const fetchTvShows = createAsyncThunk(
   'tvShowsData/fetchTvShows',
   async (_, { rejectWithValue, getState }) => {
     try {
-      const data = await fetch(
-        `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=${navigator.language}&page=1`
-      );
-      const res = await data.json();
+      const data = await fetchInitialTvShowList();
 
-      return res.results.map((el) => createMovieObject(el));
+      return data.results.map((el) => createMovieObject(el));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(`${error}`);
     }
   }
 );
@@ -27,14 +25,11 @@ export const fetchMoreTvShows = createAsyncThunk(
   'tvShowsData/fetchMoreTvShows',
   async (page, { rejectWithValue }) => {
     try {
-      const data = await fetch(
-        `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=${navigator.language}&page=${page}`
-      );
-      const res = await data.json();
+      const data = await fetchMoreTvShowList(page);
 
-      return res.results.map((el) => createMovieObject(el));
+      return data.results.map((el) => createMovieObject(el));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(`${error}`);
     }
   }
 );

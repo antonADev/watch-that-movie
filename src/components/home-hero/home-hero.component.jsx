@@ -1,10 +1,12 @@
 import React from 'react';
 import Theme from '../../Theme';
+import Footer from '../footer/footer.component';
 import {
   HomeHeroWrapper,
   ImageWrapper,
   Title,
   Subtitle,
+  ChildrenContainer,
 } from './home-hero.styles';
 
 const HomeHero = ({ title, subtitle, children }) => {
@@ -17,7 +19,7 @@ const HomeHero = ({ title, subtitle, children }) => {
             <Subtitle>{subtitle}</Subtitle>
           </header>
         </ImageWrapper>
-        {children}
+        <ChildrenContainer>{children}</ChildrenContainer>
       </HomeHeroWrapper>
     </Theme>
   );

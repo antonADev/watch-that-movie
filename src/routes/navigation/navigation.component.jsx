@@ -1,10 +1,12 @@
-import React, { useState, Suspense, useRef } from 'react';
+import { useState, Suspense, useRef } from 'react';
 import { useOnClickOutside } from '../../utils/hooks';
-
 import { Outlet } from 'react-router-dom';
 
 import { ReactComponent as MenuIcon } from '../../assets/icon-menu.svg';
 import { ReactComponent as Close } from '../../assets/icon-menu-close.svg';
+import Spinner from '../../components/spinner/spinner.component';
+
+import Theme from '../../Theme';
 
 import {
   Nav,
@@ -16,8 +18,6 @@ import {
   ListItem,
   IconWrapper,
 } from './navigation.styles';
-import Theme from '../../Theme';
-import Footer from '../../components/footer/footer.component';
 
 const Navigation = () => {
   const ref = useRef();
@@ -35,7 +35,10 @@ const Navigation = () => {
           </LinkLogo>
 
           <LinkMenu isOpen={isOpen}>
-            <UnorderedLi>
+            <UnorderedLi
+              onClick={() => {
+                setIsOpen(false);
+              }}>
               <ListItem>
                 <NavLink to='/'>Home</NavLink>
               </ListItem>
@@ -57,7 +60,7 @@ const Navigation = () => {
             {!isOpen ? <MenuIcon /> : <Close />}
           </IconWrapper>
         </Nav>
-        <Suspense>
+        <Suspense fallback={<Spinner />}>
           <Outlet />
         </Suspense>
       </Theme>

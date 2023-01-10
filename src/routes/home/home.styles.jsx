@@ -11,8 +11,9 @@ export const CarouselWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  margin: 2rem 0 10rem;
-  height: 600px;
+  margin: 2rem 0 7rem;
+  min-height: 600px;
+  height: fit-content;
   @media ${(props) => props.theme.deviceMin.laptop} {
     gap: 5rem;
   }

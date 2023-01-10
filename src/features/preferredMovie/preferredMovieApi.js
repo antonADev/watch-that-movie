@@ -10,7 +10,10 @@ export const fetchMovieList = (type, genre, providers) => {
     }&with_watch_providers=${providers.map((provider, index) => {
       return `${index ? '|' : ''}${provider.id}`;
     })}&watch_region=IT&with_watch_monetization_types=flatrate`
-  ).then((res) => res.json());
+  ).then((res) => {
+    if (!res.ok) throw new Error(`${res.statusText}`);
+    return res.json();
+  });
 };
 
 export const fetchRandomMovieFromList = (type, genre, providers, previousResult) => {
@@ -20,5 +23,8 @@ export const fetchRandomMovieFromList = (type, genre, providers, previousResult)
     )}&with_genres=${genre.id}&with_watch_providers=${providers.map((provider, index) => {
       return `${index ? '|' : ''}${provider.id}`;
     })}&watch_region=IT&with_watch_monetization_types=flatrate`
-  ).then((res) => res.json());
+  ).then((res) => {
+    if (!res.ok) throw new Error(`${res.statusText}`);
+    return res.json();
+  });
 };

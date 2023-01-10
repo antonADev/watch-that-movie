@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
-import { fetchPreferredMovie } from '../../features/preferredMovie/preferredMovieSlice';
-
-import Button, {
-  BUTTON_TYPE_CLASSES,
-} from '../../components/button/button.component';
-
-import ShowSelector from '../../components/show-selector/show-selector.component';
-
-import HomeHero from '../../components/home-hero/home-hero.component';
 
 import Theme from '../../Theme';
 
-import { FormWrapper, ButtonWrapper } from './form.styles';
+import Button, { BUTTON_TYPE_CLASSES } from '../../components/button/button.component';
+import ShowSelector from '../../components/show-selector/show-selector.component';
+import HomeHero from '../../components/home-hero/home-hero.component';
+
+import { fetchPreferredMovie } from '../../features/preferredMovie/preferredMovieSlice';
+
+import { FormWrapper, FormHeader, ButtonWrapper } from './form.styles';
 
 const initialState = {
   movieOrTv: '',
@@ -46,7 +42,7 @@ const Form = () => {
           title={`Aren't you up to something completely random?`}
           subtitle={`No problem, give us some informations of what you're up to, and we'll try to suggest you something that fits for you`}>
           <>
-            <h1>Provide us some informations.</h1>
+            <FormHeader>Provide us some informations.</FormHeader>
             <ShowSelector formData={formData} setFormData={setFormData} />
           </>
           {formData.providers?.[0] && (

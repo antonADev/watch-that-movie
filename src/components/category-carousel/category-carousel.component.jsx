@@ -6,7 +6,6 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { useIntersectionObserver } from '../../utils/hooks';
 import {
   CategoryWrapper,
-  DetailLink,
   CategoryTitle,
   CategoryDataWrapper,
   NextButton,
@@ -16,7 +15,6 @@ import {
 
 import CategoryItem from '../category-item/category-item.component';
 import {
-  fetchMovieCredits,
   fetchSelectedMovie,
   setType,
   setId,
@@ -29,7 +27,6 @@ import noImage from '../../assets/no-img.png';
 
 const CategoryCarousel = ({ title, category, genresArr, type }) => {
   const dispatch = useDispatch();
-  // const element = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const handleClick = (index) => {
     if (index < 0) {
@@ -61,6 +58,7 @@ const CategoryCarousel = ({ title, category, genresArr, type }) => {
 
           <CategoryDataWrapper {...handlers} activeIndex={activeIndex}>
             {category?.map((el) => {
+              console.log(`${el.title} + ${el.backdrop}`);
               return (
                 <CategoryItem
                   id={el.id}
@@ -74,11 +72,7 @@ const CategoryCarousel = ({ title, category, genresArr, type }) => {
                   title={el.title}
                   year={el.release}
                   backdrop={
-                    !el.backdrop && !el.poster
-                      ? `${noImage}`
-                      : el.backdrop
-                      ? el.backdrop
-                      : el.poster
+                    !el.backdrop && !el.poster ? noImage : el.backdrop ? el.backdrop : el.poster
                   }
                   genres={el.genres?.map((genre) => {
                     const match = genresArr.find((el) => el.id === genre);

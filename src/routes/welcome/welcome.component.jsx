@@ -5,18 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { setIsLoaded } from '../../features/welcome/welcomeSlice';
 
-import {
-  WelcomeWrapper,
-  Paragraph,
-  Span,
-  AnimationDiv,
-  Header,
-  DotContainer,
-} from './welcome.styles';
+import { WelcomeWrapper, Span, AnimationDiv, Header, DotContainer } from './welcome.styles';
 import Theme from '../../Theme';
 
 const Welcome = () => {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLoaded } = useSelector((state) => state.welcome);
   console.log(isLoaded);
@@ -34,10 +26,6 @@ const Welcome = () => {
   return (
     <Theme>
       <WelcomeWrapper>
-        {/* <Paragraph>
-        <Span aria-hidden={true}>Watch That Movie</Span>Watch That Movie
-        <Span aria-hidden={true}>Watch That Movie</Span>
-      </Paragraph> */}
         <AnimationDiv>
           <Header>
             <Span>Watch</Span>

@@ -1,31 +1,23 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+import { fetchMovieGenres, fetchTvSeriesGenres } from './genreApi';
 
 const initialState = {
   movieGenres: {},
   seriesGenres: {},
   status: '',
-  message: '',
+  moviesMessage: '',
+  seriesMessage: '',
 };
 
 export const fetchGenreData = createAsyncThunk(
   'genreData/fetchGenreData',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await Promise.all([
-        fetch(
-          `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=${navigator.language}`
-        ),
-        fetch(
-          `https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=${navigator.language}`
-        ),
-      ]);
-      const data = await Promise.all(response.map((r) => r.json()));
-      return data;
+      const response = await Promise.all([fetchMovieGenres(), fetchTvSeriesGenres()]);
+      console.log(response);
+      return response;
     } catch (error) {
-      rejectWithValue(
-        `An error occurred. It wasn't possibile to retrieve the requested data`
-      );
+      rejectWithValue(`An error occurred. ${error}`);
     }
   }
 );
@@ -40,14 +32,14 @@ const genreSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchGenreData.fulfilled, (state, action) => {
-        console.log(action);
         state.status = 'idle';
         state.movieGenres = action.payload[0];
         state.seriesGenres = action.payload[1];
       })
       .addCase(fetchGenreData.rejected, (state, action) => {
         state.status = 'error';
-        state.message = action.payload;
+        state.moviesMessage = action.payload[0];
+        state.seriesMessage = action.payload[1];
       });
   },
 });

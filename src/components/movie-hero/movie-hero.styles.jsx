@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export const ImageWrapper = styled.div`
   position: relative;
-  height: 20vmax;
+  height: 25vmax;
   min-height: 300px;
   max-height: 600px;
   border-radius: 0 0 30px 30px;
@@ -32,10 +32,6 @@ export const ImageWrapper = styled.div`
     min-height: 350px;
     height: 30vmax;
   }
-  /* @media ${(props) => props.theme.deviceMin.tablet} {
-    min-height: 300px;
-    height: 30vmax;
-  } */
 `;
 
 export const TrailerContainer = styled.div`

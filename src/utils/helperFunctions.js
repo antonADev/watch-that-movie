@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export const randomize = (number = 500) => {
   if (number > 500) return Math.floor(Math.random() * 500);
   else return Math.floor(Math.random() * number);
@@ -5,6 +7,7 @@ export const randomize = (number = 500) => {
 
 export const createMovieObject = (data) => {
   return {
+    key: uuidv4(),
     id: data.id,
     backdrop: data.backdrop_path,
     credits: data.credits,

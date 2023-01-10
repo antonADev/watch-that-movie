@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 export const CategoryWrapper = styled.div`
-  /* display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start; */
+  align-items: flex-start;
   width: 45%;
   min-width: 320px;
   overflow: hidden;
