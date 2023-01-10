@@ -31,7 +31,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Live Site](https://news-webpage-antonadev.netlify.app/)
+- Live Site URL: [Live Site](https://watch-that-movie.netlify.app)
 
 ## My process
 
