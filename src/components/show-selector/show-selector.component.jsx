@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchGenreData } from '../../features/genreSelector/genreSlice';
 
-import Button, {
-  BUTTON_TYPE_CLASSES,
-} from '../../components/button/button.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../../components/button/button.component';
 
 import ChoiceSelection from '../choice-selection/choice-selection.component';
 
@@ -20,9 +18,7 @@ const ShowSelector = ({ formData, setFormData }) => {
   const dispatch = useDispatch();
   const [active, setActive] = useState('');
 
-  const { movieGenres, seriesGenres, status, message } = useSelector(
-    (state) => state.genreData
-  );
+  const { movieGenres, seriesGenres, status } = useSelector((state) => state.genreData);
 
   const handleClick = (e) => {
     setActive(e.target.id);
@@ -34,9 +30,7 @@ const ShowSelector = ({ formData, setFormData }) => {
   return (
     <Theme>
       <ShowWrapper>
-        <ChoiceSelection
-          size={formData.movieOrTv ? 'small' : 'big'}
-          title='What are you up to?'>
+        <ChoiceSelection size={formData.movieOrTv ? 'small' : 'big'} title='What are you up to?'>
           <Button
             buttonType={BUTTON_TYPE_CLASSES.inverted}
             id='movie'
@@ -58,16 +52,12 @@ const ShowSelector = ({ formData, setFormData }) => {
         </ChoiceSelection>
 
         {formData.movieOrTv && (
-          <ChoiceSelection
-            size={formData.genre ? 'small' : 'big'}
-            title='Choose a genre'>
+          <ChoiceSelection size={formData.genre ? 'small' : 'big'} title='Choose a genre'>
             {status === 'loading' && <Spinner />}
             {status === 'idle' && movieGenres && seriesGenres && (
               <Genre
                 label='Choose'
-                values={
-                  active === 'movie' ? movieGenres.genres : seriesGenres.genres
-                }
+                values={active === 'movie' ? movieGenres.genres : seriesGenres.genres}
                 onChange={(v) => console.log(v)}
                 formData={formData}
                 setFormData={setFormData}
@@ -76,10 +66,7 @@ const ShowSelector = ({ formData, setFormData }) => {
           </ChoiceSelection>
         )}
         {formData.genre && (
-          <ChoiceSelection
-            justify='flex-start'
-            size='big'
-            title='Select your streaming providers'>
+          <ChoiceSelection justify='flex-start' size='big' title='Select your streaming providers'>
             <ProviderSelector formData={formData} setFormData={setFormData} />
           </ChoiceSelection>
         )}

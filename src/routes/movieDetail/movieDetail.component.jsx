@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useLocation, useMatch } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { fetchSelectedMovie } from '../../features/selectedMovie/selectedMovieSlice';
 
 import MovieCard from '../../components/movie-card/movie-card.component';

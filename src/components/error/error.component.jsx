@@ -1,6 +1,4 @@
 import React from 'react';
-import HomeHero from '../home-hero/home-hero.component';
-import { ErrorContainer } from './error.styles';
 const Error = ({ message }) => {
   return (
     <>

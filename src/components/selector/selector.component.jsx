@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 import Theme from '../../Theme';
 
-import {
-  SelectContainer,
-  SelectLabelButton,
-  DropdownStyle,
-  DropdownItem,
-} from './selector.styles';
+import { SelectContainer, SelectLabelButton, DropdownStyle, DropdownItem } from './selector.styles';
 
 const Genre = ({ label, values, onChange, formData, setFormData }) => {
   const [currentValue, setCurrentValue] = useState(formData.genre.name);

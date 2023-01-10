@@ -2,7 +2,6 @@ import React from 'react';
 import Theme from '../../Theme';
 import { FooterWrapper, LogoContainer, CreditsContainer } from './footer.styles';
 import { ReactComponent as Logo } from '../../assets/tmdbLogo.svg';
-import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <Theme>

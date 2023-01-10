@@ -1,6 +1,5 @@
 import React from 'react';
 import Theme from '../../Theme';
-import Footer from '../footer/footer.component';
 import {
   HomeHeroWrapper,
   ImageWrapper,

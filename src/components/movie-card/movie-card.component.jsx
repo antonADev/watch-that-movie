@@ -1,6 +1,3 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
 import MovieHero from '../movie-hero/movie-hero.component';
 import Details from '../details/details.component';
 import Storyline from '../storyline/storyline.components';
@@ -13,7 +10,6 @@ import {
   ProfileCarousel,
   CastWrapper,
 } from './movie-card.styles';
-import Spinner from '../spinner/spinner.component';
 import PeopleCarousel from '../people-carousel/people-carousel.component';
 import Theme from '../../Theme';
 

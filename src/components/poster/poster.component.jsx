@@ -1,4 +1,3 @@
-import React from 'react';
 import { MOBILE_IMAGE_PATH } from '../../constants/global';
 import Theme from '../../Theme';
 

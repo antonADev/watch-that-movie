@@ -24,7 +24,6 @@ const DESKTOP_IMAGE_PATH = 'https://image.tmdb.org/t/p/original';
 const MovieHero = ({ title, year, backdrop, genres, video }) => {
   const [playVideo, setPlayVideo] = useState(false);
   function onPlayerReady(event) {
-    // event.target.mute();
     event.target.playVideo();
   }
   return (
@@ -33,9 +32,7 @@ const MovieHero = ({ title, year, backdrop, genres, video }) => {
         background={
           backdrop === 'null'
             ? `${noImage}`
-            : `${
-                window.innerWidth > 768 ? DESKTOP_IMAGE_PATH : MOBILE_IMAGE_PATH
-              }${backdrop}`
+            : `${window.innerWidth > 768 ? DESKTOP_IMAGE_PATH : MOBILE_IMAGE_PATH}${backdrop}`
         }>
         {video && playVideo && (
           <TrailerContainer>
@@ -53,9 +50,7 @@ const MovieHero = ({ title, year, backdrop, genres, video }) => {
               onReady={onPlayerReady}
             />
 
-            <CloseButton
-              aria-label='Close Trailer'
-              onClick={() => setPlayVideo(false)}>
+            <CloseButton aria-label='Close Trailer' onClick={() => setPlayVideo(false)}>
               <AiFillCloseCircle />
             </CloseButton>
           </TrailerContainer>
@@ -68,9 +63,7 @@ const MovieHero = ({ title, year, backdrop, genres, video }) => {
               <span>({year?.slice(0, 4)})</span>
             </h1>
             {video && (
-              <PlayButton
-                aria-label='Play Trailer'
-                onClick={() => setPlayVideo(true)}>
+              <PlayButton aria-label='Play Trailer' onClick={() => setPlayVideo(true)}>
                 <FaPlayCircle />
               </PlayButton>
             )}

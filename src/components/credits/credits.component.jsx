@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import Theme from '../../Theme';
 
@@ -17,12 +16,7 @@ const Credits = ({ releaseDate, crew }) => {
         <CreditPara>
           {type === 'movie' ? 'Director:' : 'Executive Producers:'}{' '}
           <span>
-            {useFilter(
-              crew,
-              'job',
-              type === 'movie' ? 'Director' : 'Executive Producer',
-              3
-            )}
+            {useFilter(crew, 'job', type === 'movie' ? 'Director' : 'Executive Producer', 3)}
           </span>
         </CreditPara>
         <CreditPara>

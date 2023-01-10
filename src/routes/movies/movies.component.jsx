@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Routes, Route, useParams, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { fetchMovies, fetchMoreMovies } from '../../features/movies/moviesSlice';
 
 import MovieList from '../../components/movieList/movieList.component';

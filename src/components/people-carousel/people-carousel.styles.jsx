@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
-// import {PeopleCarouselWrapper, PeopleCarouselCard, ImageContainer, InfoContainer} from "./people-carousel.styles"
-
 export const PeopleCarouselCard = styled.div`
-  /* margin: 1rem; */
-  /* min-height: 150px; */
   height: max-content;
   aspect-ratio: 2/3;
   max-width: 150px;

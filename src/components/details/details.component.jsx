@@ -1,22 +1,5 @@
 import React from 'react';
-
-import { useFilter } from '../../utils/helperFunctions';
-
-import Storyline from '../storyline/storyline.components';
-
-import {
-  DataWrapper,
-  ReviewWrapper,
-  ProgressWrapper,
-  CreditWrapper,
-  CreditTextWrapper,
-  CreditPara,
-  PosterWrapper,
-} from './details.styles';
-
-import { MOBILE_IMAGE_PATH, DESKTOP_IMAGE_PATH } from '../../constants/global';
-
-import ProgressCircle from '../progress-circle/progress-circle.component';
+import { DataWrapper, CreditWrapper } from './details.styles';
 import Theme from '../../Theme';
 import Reviews from '../reviews/reviews.component';
 import Credits from '../credits/credits.component';

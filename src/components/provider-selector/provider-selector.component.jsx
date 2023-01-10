@@ -15,7 +15,7 @@ import ProviderItem from '../provider-item/provider-item.component';
 import ProviderSelected from '../provider-selected/provider-selected.component';
 
 const region = getRegion(navigator.language);
-
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const ProviderSelector = ({ formData, setFormData }) => {
   const [fetchedProviders, setFetchedProviders] = useState([]);
   const [filteredProvider, setFilteredProvider] = useState(fetchedProviders);
@@ -24,9 +24,7 @@ const ProviderSelector = ({ formData, setFormData }) => {
   const { providers } = formData;
 
   const handleAdd = (el) => {
-    const existingProvider = providers?.find(
-      (provider) => provider.id === el.id
-    );
+    const existingProvider = providers?.find((provider) => provider.id === el.id);
 
     if (existingProvider) return;
 
@@ -41,23 +39,19 @@ const ProviderSelector = ({ formData, setFormData }) => {
   };
 
   const handleRemove = (el) => {
-    const existingProvider = providers?.find(
-      (provider) => provider.id === el.id
-    );
+    const existingProvider = providers?.find((provider) => provider.id === el.id);
 
     if (existingProvider) {
       setFormData({
         ...formData,
-        providers: providers.filter(
-          (provider) => provider.id !== existingProvider.id
-        ),
+        providers: providers.filter((provider) => provider.id !== existingProvider.id),
       });
     }
   };
 
   const fetchProviders = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/watch/providers/tv?api_key=b4075be843e96cdf1d04055e2fee6ec7&language=${navigator.language}&watch_region=${region}`
+      `https://api.themoviedb.org/3/watch/providers/tv?api_key=${API_KEY}&language=${navigator.language}&watch_region=${region}`
     );
 
     const res = await data.json();

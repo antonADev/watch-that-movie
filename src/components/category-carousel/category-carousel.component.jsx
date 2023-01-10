@@ -1,9 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import { useIntersectionObserver } from '../../utils/hooks';
 import {
   CategoryWrapper,
   CategoryTitle,
@@ -19,8 +18,6 @@ import {
   setType,
   setId,
 } from '../../features/selectedMovie/selectedMovieSlice';
-
-// import { DESKTOP_IMAGE_PATH, MOBILE_IMAGE_PATH } from '../../constants/global';
 
 import Theme from '../../Theme';
 import noImage from '../../assets/no-img.png';

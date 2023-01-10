@@ -1,8 +1,4 @@
-import {
-  BaseButton,
-  GoogleSignInButton,
-  InvertedButton,
-} from './button.styles.jsx';
+import { BaseButton, InvertedButton } from './button.styles.jsx';
 
 import Theme from '../../Theme.jsx';
 
