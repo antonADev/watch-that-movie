@@ -14,7 +14,6 @@ import { DESKTOP_IMAGE_PATH, MOBILE_IMAGE_PATH } from '../../constants/global';
 const CategoryItem = ({ title, year, backdrop, genres, onClick, id, type }) => {
   const ref = useRef();
   const isVisible = useIntersectionObserver(ref, { treshold: 1 });
-  console.log(backdrop);
   return (
     <Theme>
       <DetailLink to={`${type}/${id}`}>

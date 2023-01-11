@@ -58,7 +58,7 @@ const ShowSelector = ({ formData, setFormData }) => {
               <Genre
                 label='Choose'
                 values={active === 'movie' ? movieGenres.genres : seriesGenres.genres}
-                onChange={(v) => console.log(v)}
+                // onChange={(v) => console.table(v)}
                 formData={formData}
                 setFormData={setFormData}
               />

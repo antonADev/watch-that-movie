@@ -11,7 +11,6 @@ import { MovieDetailWrapper } from './movieDetail.styles';
 const MovieDetail = ({ type }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(useLocation());
 
   useEffect(() => {
     dispatch(fetchSelectedMovie({ type: type, id: id }));

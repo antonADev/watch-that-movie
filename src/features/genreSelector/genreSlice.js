@@ -14,7 +14,6 @@ export const fetchGenreData = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await Promise.all([fetchMovieGenres(), fetchTvSeriesGenres()]);
-      console.log(response);
       return response;
     } catch (error) {
       rejectWithValue(`An error occurred. ${error}`);

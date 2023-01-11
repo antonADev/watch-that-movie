@@ -55,7 +55,6 @@ const CategoryCarousel = ({ title, category, genresArr, type }) => {
 
           <CategoryDataWrapper {...handlers} activeIndex={activeIndex}>
             {category?.map((el) => {
-              console.log(`${el.title} + ${el.backdrop}`);
               return (
                 <CategoryItem
                   id={el.id}
