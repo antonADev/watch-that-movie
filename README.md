@@ -47,7 +47,7 @@ Users should be able to:
 
 ### What I learned
 
-It is always a pleasure to review all the topics studied during my learning path. In this project I wanted to brush up on my skills to optimally use react, redux and createAsyncThunk, styled components, react-router-dom.
+It is always a pleasure to review all the topics studied during my learning path. In this project I wanted to brush up on my skills to optimally use React, Redux and createAsyncThunk, Styled Components, react-router-dom.
 
 ## Author
 
