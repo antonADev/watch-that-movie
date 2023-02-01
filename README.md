@@ -51,6 +51,6 @@ It is always a pleasure to review all the topics studied during my learning path
 
 ## Author
 
-- GitHub - [Antonio](https://github.com/antonADev)
+- GitHub - [antonADev](https://github.com/antonADev)
 - LinkedIn - [Antonio Aurello](https://www.linkedin.com/in/antonio-aurello-894179211/)
 - Twitter - [@AntonioAurello](https://www.twitter.com/AntonioAurello)
