@@ -1,7 +1,7 @@
 import React from 'react';
 import Theme from '../../Theme';
 import { FooterWrapper, LogoContainer, CreditsContainer } from './footer.styles';
-import TmdbLogo from '../../assets/TmdbLogo.svg?react';
+import TmdbLogo from '../../assets/TmdbLogo.svg';
 const Footer = () => {
   return (
     <Theme>
