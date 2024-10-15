@@ -15,7 +15,7 @@ import {
 
 import YouTube from 'react-youtube';
 
-import noImage from '../../assets/no-img.png';
+import noImage from '../../../public/no-img.png';
 import { useState } from 'react';
 
 const MOBILE_IMAGE_PATH = 'https://image.tmdb.org/t/p/w780';

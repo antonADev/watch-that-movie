@@ -6,7 +6,7 @@ import Theme from '../../Theme';
 import { useIntersectionObserver } from '../../utils/hooks';
 
 import { MovieListItemWrapper, ImageWrapper, TextWrapper } from './movieList-item.styles';
-import noImage from '../../assets/no-img.png';
+import noImage from '../../../public/no-img.png';
 const MovieListItem = ({ poster, title, release, id }) => {
   const ref = useRef();
   const isVisible = useIntersectionObserver(ref, { treshold: 0.5 });

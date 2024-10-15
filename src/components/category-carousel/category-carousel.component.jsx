@@ -20,7 +20,7 @@ import {
 } from '../../features/selectedMovie/selectedMovieSlice';
 
 import Theme from '../../Theme';
-import noImage from '../../assets/no-img.png';
+import noImage from '../../../public/no-img.png';
 
 const CategoryCarousel = ({ title, category, genresArr, type }) => {
   const dispatch = useDispatch();

@@ -2,8 +2,8 @@ import { useState, Suspense, useRef } from 'react';
 import { useOnClickOutside } from '../../utils/hooks';
 import { Outlet } from 'react-router-dom';
 
-import MenuIcon from '../../assets/icon-menu.svg';
-import CloseIcon from '../../assets/icon-menu-close.svg';
+import MenuIcon from '../../../public/icon-menu.svg';
+import CloseIcon from '../../../public/icon-menu-close.svg';
 import Spinner from '../../components/spinner/spinner.component';
 
 import Theme from '../../Theme';

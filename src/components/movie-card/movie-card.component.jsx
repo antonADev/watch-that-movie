@@ -2,7 +2,7 @@ import MovieHero from '../movie-hero/movie-hero.component';
 import Details from '../details/details.component';
 import Storyline from '../storyline/storyline.components';
 
-import noImage from '../../assets/no-img.png';
+import noImage from '../../../public/no-img.png';
 import {
   MovieCardWrapper,
   MovieHeroWrapper,
