@@ -2,8 +2,8 @@ import { useState, Suspense, useRef } from 'react';
 import { useOnClickOutside } from '../../utils/hooks';
 import { Outlet } from 'react-router-dom';
 
-import { ReactComponent as MenuIcon } from '../../assets/icon-menu.svg';
-import { ReactComponent as Close } from '../../assets/icon-menu-close.svg';
+import MenuIcon from '../../assets/icon-menu.svg?react';
+import CloseIcon from '../../assets/icon-menu-close.svg?react';
 import Spinner from '../../components/spinner/spinner.component';
 
 import Theme from '../../Theme';
@@ -57,7 +57,7 @@ const Navigation = () => {
             onClick={() => {
               setIsOpen((isOpen) => !isOpen);
             }}>
-            {!isOpen ? <MenuIcon /> : <Close />}
+            {!isOpen ? <MenuIcon /> : <CloseIcon />}
           </IconWrapper>
         </Nav>
         <Suspense fallback={<Spinner />}>

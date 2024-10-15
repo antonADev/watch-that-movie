@@ -82,6 +82,7 @@ export const PlayButton = styled.button`
   align-items: flex-end;
   color: ${(props) => props.theme.colors.white};
   font-size: 3.5rem;
+  cursor: pointer;
 `;
 
 export const CloseButton = styled(PlayButton)`

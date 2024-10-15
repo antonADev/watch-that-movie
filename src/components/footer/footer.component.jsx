@@ -1,7 +1,7 @@
 import React from 'react';
 import Theme from '../../Theme';
 import { FooterWrapper, LogoContainer, CreditsContainer } from './footer.styles';
-import { ReactComponent as Logo } from '../../assets/tmdbLogo.svg';
+import TmdbLogo from '../../assets/TmdbLogo.svg?react';
 const Footer = () => {
   return (
     <Theme>
@@ -17,7 +17,7 @@ const Footer = () => {
         <LogoContainer>
           <h3>Powered by: </h3>
           <a href='https://www.themoviedb.org/' target='_blank' rel='noreferrer'>
-            <Logo />
+            <TmdbLogo />
           </a>
         </LogoContainer>
       </FooterWrapper>
